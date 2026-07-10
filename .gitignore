@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Build/cache
+dist/
+.vite/
+__pycache__/
+*.pyc
+
+# Virtual env
+.venv/
+venv/
+
+# IDE
+.idea/
+
+# Executables/temp
+*.exe
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
