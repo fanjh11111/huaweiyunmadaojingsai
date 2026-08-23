@@ -1,0 +1,22 @@
+# 后端依赖清单（Python 3.11）
+# 安装：pip install -r requirements.txt
+# 注意：torch 建议 CPU 版以减小体积，例如：
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+# Web 框架
+fastapi>=0.110
+uvicorn>=0.29
+pydantic>=2.6
+
+# 数据处理
+pandas>=2.0
+numpy>=1.24
+
+# 模型推理（LSTM 预测 + scaler 反序列化需要 scikit-learn）
+torch>=2.2
+joblib>=1.3
+scikit-learn>=1.3
+
+# 可选：AgentArts / DashScope 调用脚本依赖（不装不影响主流程，RAG 会自动降级本地模板）
+requests>=2.31
+# huaweicloudsdkcore>=3.1  # 仅 backend/rag/invoke_agentarts_v4/v5.py 需要

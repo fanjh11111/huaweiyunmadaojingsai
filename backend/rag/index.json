@@ -1,0 +1,730 @@
+[
+  {
+    "id": "hydraulic_leak-1",
+    "title": "hydraulic_leak",
+    "category": "airport_handbook",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/airport_handbook/hydraulic_leak.md",
+    "content": "# 液压系统泄漏处置\n\n液压压力下降、液压油量异常或出现泄漏描述时，应在航后检查管路、接头、作动筒和阀件，定位泄漏源并记录液压趋势。\n\n达到维护手册规定的隔离或停场条件时，应隔离相关系统并执行进一步检查；处置完成后要复查液位、压力和功能。",
+    "content_hash": "095ad0a92e414ecf23602e638f5a363ca8c588fd51effa5a060b98bf17bcc099"
+  },
+  {
+    "id": "engine_airworthiness_directive_cases-1",
+    "title": "engine_airworthiness_directive_cases",
+    "category": "caac_airworthiness_directives",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_airworthiness_directives/engine_airworthiness_directive_cases.md",
+    "content": "Trent 1000和Trent 7000中压压气机轴组件检查\n\n资料包中的 CAD2026-MULT-45 适用于 Rolls-Royce Deutschland Trent 1000 和 Trent 7000 系列发动机，要求对受影响部件的中压压气机轴组件前部气封进行重复检查；按检查结果，可能需要发动机停用并采取纠正措施。该指令还列出通过安装不属于受影响部件定义的中压压气机轴组件作为重复检查的一项可选终止措施。具体适用性、间隔及措施须按该指令引用文件的现行有效内容执行。",
+    "content_hash": "2be25a237ae7faf03d7d4286b14b340ffcf098af0b113117f7e53fb09c2a780b"
+  },
+  {
+    "id": "engine_airworthiness_directive_cases-2",
+    "title": "engine_airworthiness_directive_cases",
+    "category": "caac_airworthiness_directives",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_airworthiness_directives/engine_airworthiness_directive_cases.md",
+    "content": "Trent 1000低压涡轮盘检查\n\n资料包中的 CAD2026-MULT-32 适用于 Rolls-Royce Deutschland Trent 1000 系列发动机，针对低压涡轮第3级和第4级盘可能出现的裂纹，要求拆卸和检查，并规定相关安装限制以防止失效。该指令替代资料包中列明的早期版本。任何发现、停用、安装限制或恢复使用，均须严格按其完整适用性和符合性时间执行。",
+    "content_hash": "4dfa043a65b95b4a6f846cdd81977047e37a7618f083ec0011f9ca584874bbfe"
+  },
+  {
+    "id": "engine_airworthiness_directive_cases-3",
+    "title": "engine_airworthiness_directive_cases",
+    "category": "caac_airworthiness_directives",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_airworthiness_directives/engine_airworthiness_directive_cases.md",
+    "content": "PW210涡轮排气机匣检查和更换\n\n资料包中的 CAD2026-MULT-42 适用于 Pratt & Whitney Canada PW210 系列发动机。该紧急适航指令根据更新的寿命分析结果，更新了受影响发动机涡轮排气机匣的检查间隔，并要求按更新要求完成检查和更换。不得将其检查间隔或更换条件套用于其他型号、其他构型或未经确认的部件。",
+    "content_hash": "6d8b6f0aececfd02e61d7b1b5f6676231884e2d4f6357c4cd8d79e2d5d5ab6ed"
+  },
+  {
+    "id": "engine_airworthiness_directive_cases-4",
+    "title": "engine_airworthiness_directive_cases",
+    "category": "caac_airworthiness_directives",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_airworthiness_directives/engine_airworthiness_directive_cases.md",
+    "content": "GEnx燃油管路更换\n\n资料包中的 CAD2026-MULT-43 适用于 General Electric GEnx-1B 和 GEnx-2B 系列发动机，针对连接主燃滑油散热器的燃油管质量问题，要求对受影响燃油管进行更换。该内容不能用来判定所有燃油渗漏或所有 GEnx 发动机均适用；应确认完整指令的适用性、受影响部件和符合性要求。",
+    "content_hash": "3eea157b3e9080e6276a035ebbfdf404907241dcae37df5de27ce1445203950c"
+  },
+  {
+    "id": "engine_airworthiness_directive_cases-5",
+    "title": "engine_airworthiness_directive_cases",
+    "category": "caac_airworthiness_directives",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_airworthiness_directives/engine_airworthiness_directive_cases.md",
+    "content": "Trent 7000滑油供油和回油泵安装准则\n\n资料包中的 CAD2026-MULT-44 适用于 Rolls-Royce Deutschland Trent 7000 系列发动机。指令保留其列明的早期要求并扩大至所有可能存在不安全状况的发动机；对每次安装或重新安装受影响部件，要求执行相关服务通告规定的安装准则。作业人员必须使用获批准且适用的最新版数据，不得依据本摘要进行安装。",
+    "content_hash": "b9bfed2f3d5f37f0402d6567d51a71c509714f4b2278000b505df88b4d46cdd3"
+  },
+  {
+    "id": "engine_airworthiness_directive_cases-6",
+    "title": "engine_airworthiness_directive_cases",
+    "category": "caac_airworthiness_directives",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_airworthiness_directives/engine_airworthiness_directive_cases.md",
+    "content": "CFM56-7B和ARRIEL 2的适航限制章节修订\n\n资料包中的 CAD2026-MULT-50 针对 CFM56-7B 系列发动机，要求依据制造商新发布的适航限制章节对低压涡轮后框架进行检查和更换。CAD2026-MULT-49 针对 ARRIEL 2 多个型号，更新了适航限制章节对应的手册编号和架构。此类指令的核心是将当前有效 ALS 作业纳入持续适航控制；具体任务、阈值和时限应以获批准的现行 ALS 为准。",
+    "content_hash": "3316b7cf370aca5e259deaf8cd4c20d77480f639aa8f8c1e948fbc11d0fa73c4"
+  },
+  {
+    "id": "engine_airworthiness_directive_cases-7",
+    "title": "engine_airworthiness_directive_cases",
+    "category": "caac_airworthiness_directives",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_airworthiness_directives/engine_airworthiness_directive_cases.md",
+    "content": "旧指令与失效模式示例的使用限制\n\n资料包还含有关于压气机叶片、燃油喷嘴与供油总管、滑油供应管密封圈、液压机械计量单元和发动机电子控制器等项目的较早适航指令，以及一项明确取消早期动力涡轮盘要求的指令。这些文件可帮助识别“型号、部件、版本和替代关系必须核对”的原则，但不能作为当前措施的唯一依据。对任何发动机异常，应先按现行批准数据完成适用性与版本确认。",
+    "content_hash": "63d82abfa6fb3620a3950311b357d5c0d61d2046e7020a3b3be50686e26ab545"
+  },
+  {
+    "id": "engine_airworthiness_directive_principles-1",
+    "title": "engine_airworthiness_directive_principles",
+    "category": "caac_airworthiness_directives",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_airworthiness_directives/engine_airworthiness_directive_principles.md",
+    "content": "适航指令的强制性与适航状态\n\n中国民航适航指令依据 CCAR-39 颁发，内容涉及飞行安全，属于强制性措施。对适用航空器或发动机，如未按指令规定完成，相关航空器将不再适航。智能体可以提示核查适用性、指令版本、符合性状态和记录，但不得把一般性问答当作已完成适航指令的证明，也不得给出放行结论。",
+    "content_hash": "4ae4573239fd846d10d9d171a9e17d8810a20c0ccf117040db366e346bddbcf7"
+  },
+  {
+    "id": "engine_airworthiness_directive_principles-2",
+    "title": "engine_airworthiness_directive_principles",
+    "category": "caac_airworthiness_directives",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_airworthiness_directives/engine_airworthiness_directive_principles.md",
+    "content": "适用性必须精确确认\n\n发动机适航指令的适用范围由发动机制造商、型号/系列、受影响部件和参考指令的“Applicability”等共同限定。发动机名称相近、安装于同类航空器或出现相似症状，均不能单独证明该指令适用。执行前应由获授权人员根据当前有效的适航指令、发动机构型、件号和序号、累计使用数据及适用的批准资料确认。",
+    "content_hash": "c0320ee0ca4ff9891339b9914e43fb4dd61d022e386c7a27cdcb1272abdd9b0c"
+  },
+  {
+    "id": "engine_airworthiness_directive_principles-3",
+    "title": "engine_airworthiness_directive_principles",
+    "category": "caac_airworthiness_directives",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_airworthiness_directives/engine_airworthiness_directive_principles.md",
+    "content": "措施与符合性时间不得自行推定\n\n资料包中的多份适航指令要求按引用文件的“Definitions”“Required Action(s) and Compliance Time(s)”或“Compliance”“Corrective Actions”执行。具体检查方法、更换条件、重复检查间隔、安装限制和终止措施不能从摘要、故障现象或其他型号指令推定。必须查阅当前有效的完整指令及其认可的参考资料。",
+    "content_hash": "023ae014af709e39a5ea37923550ad305a7833b25e9d79f16e2a52a956ee1490"
+  },
+  {
+    "id": "engine_airworthiness_directive_principles-4",
+    "title": "engine_airworthiness_directive_principles",
+    "category": "caac_airworthiness_directives",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_airworthiness_directives/engine_airworthiness_directive_principles.md",
+    "content": "等效替代方法的批准要求\n\n执行适航指令如拟采用等效替代方法或调整完成时间，必须取得适航审定部门批准；使用任何经批准的等效替代方法前，还应按指令要求通知有关飞行标准部门主管监察员。未经批准的替代方法、超期执行或仅凭模型建议，均不能视为满足指令。",
+    "content_hash": "1b4d6086bfb1cdcb068b78485e2c6b200a109afee3a006fd33ad7f5de0236d7f"
+  },
+  {
+    "id": "engine_airworthiness_directive_principles-5",
+    "title": "engine_airworthiness_directive_principles",
+    "category": "caac_airworthiness_directives",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_airworthiness_directives/engine_airworthiness_directive_principles.md",
+    "content": "指令的修订、替代与取消\n\n适航指令可能替代早期指令、扩大适用范围、修订检查间隔、引入终止措施或取消已有要求。检索到旧指令时，应先核对是否已被修订、替代或取消；不得混用不同版本的适用性与符合性时间。最终以当前有效版本及其明确列出的替代关系为准。",
+    "content_hash": "9f2a99ac1147d5e3046ff3fd60266d0d6fc58121f06304ff482a4db9362acc12"
+  },
+  {
+    "id": "engine_airworthiness_directive_principles-6",
+    "title": "engine_airworthiness_directive_principles",
+    "category": "caac_airworthiness_directives",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_airworthiness_directives/engine_airworthiness_directive_principles.md",
+    "content": "记录、构型和持续适航限制\n\n涉及发动机的持续适航工作需要保持可追溯记录，包括适用性判定、发动机构型和受影响部件身份、累计时间或循环、已执行措施、采用的批准数据以及授权签署。适航限制章节（ALS）修订类指令要求贯彻更新后的持续适航限制作业；应由运营人或维修组织依获批持续适航管理与维修方案纳入控制。",
+    "content_hash": "ea16b82e99cd7e469783d2bcba1d67b90d1f117a95e824ec5a30dbc4efc99ce0"
+  },
+  {
+    "id": "ccar_395_event_technical_investigation-1",
+    "title": "ccar_395_event_technical_investigation",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/ccar_395_event_technical_investigation.md",
+    "content": "适用范围与事件分类\n\n本规定适用于民航局、民航地区管理局组织的、在我国境内发生的民用航空器事件技术调查，包括委托事发民航生产经营单位开展的调查。民用航空器事件包括事故、征候和一般事件。事故、征候和一般事件的具体判定应依照适用定义及民航局有关规定进行；不得仅凭模型回答或非授权人员判断事件等级。",
+    "content_hash": "394861aadb4886c4b8566316fe459968ef34040430b690f35103a1346c5e66ae"
+  },
+  {
+    "id": "ccar_395_event_technical_investigation-2",
+    "title": "ccar_395_event_technical_investigation",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/ccar_395_event_technical_investigation.md",
+    "content": "事故与征候的基本边界\n\n事故可涉及人员死亡或重伤、航空器无法修复或严重损坏、航空器失踪或处于无法接近的地方。征候是运行阶段或机场活动区内发生的、未构成事故但影响或者可能影响安全的事件；一般事件的严重程度未构成征候。仅限于单台发动机（含整流罩或附件）的失效或损坏，在规定的“航空器严重损坏”排除情形中；具体事件定性仍须由有权机构按适用规则作出。",
+    "content_hash": "ab87d2c16a2c5f4ac27650fed2d1867b4115cc4b2ca309522a91a5db03234e3e"
+  },
+  {
+    "id": "ccar_395_event_technical_investigation-3",
+    "title": "ccar_395_event_technical_investigation",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/ccar_395_event_technical_investigation.md",
+    "content": "技术调查目的与边界\n\n事件技术调查的唯一目的是预防类似事件再次发生，而非分摊过失或者责任。技术调查应当与以追究责任为目的的其他调查分开进行。涉及发动机异常、维修差错或运行事件时，调查资料可用于识别安全风险和改进措施，但不能替代维修手册、适航指令或授权放行人员的适航判断。",
+    "content_hash": "ee3cffa020a1ea9c7773fc0003e45a7d62e33be17dc770b811455eb118039b68"
+  },
+  {
+    "id": "ccar_395_event_technical_investigation-4",
+    "title": "ccar_395_event_technical_investigation",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/ccar_395_event_technical_investigation.md",
+    "content": "调查基本原则\n\n调查应当独立进行，不受其他单位和个人干涉；坚持实事求是、客观公正、科学严谨；查明各种原因并深入分析设计、制造、运行、维修、保障、培训、规章和管理制度等因素；同时关注事件中暴露或调查中发现的、可能影响安全的其他问题。结论应以经核实的事实和分析为基础。",
+    "content_hash": "1e3d0c38ba11cdb2f7d5c3fa3c894f4f77b08ec1856b2a1853172ab14fbed29f"
+  },
+  {
+    "id": "ccar_395_event_technical_investigation-5",
+    "title": "ccar_395_event_technical_investigation",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/ccar_395_event_technical_investigation.md",
+    "content": "相关单位的配合义务\n\n事发相关单位和个人应当协助、配合事件调查，无正当理由不得拒绝；不得提供或指使他人提供虚假材料、虚假证言证词。事件调查信息由民航局、地区管理局新闻发言人或指定人员发布，其他单位和个人不得擅自发布或透露调查信息。发生异常时，应按本单位获批程序履行报告、记录保存和配合要求。",
+    "content_hash": "f887920cc2c191a1f2bf0f21bddf214845d241152e3632ff3b5de8aaea309f8d"
+  },
+  {
+    "id": "ccar_395_event_technical_investigation-6",
+    "title": "ccar_395_event_technical_investigation",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/ccar_395_event_technical_investigation.md",
+    "content": "调查组织与专业分工\n\n民航局组织特定重大事件及其认为有必要组织的其他事件调查；地区管理局组织其辖区内的规定范围事件调查。调查组由调查员和临时聘请专家组成，可按工作需要设立飞行运行、航空器适航和维修、空管、气象、机场保障、飞行记录器、失效分析、安全管理等专业小组。与事件有直接利害关系的人员不得参加调查工作。",
+    "content_hash": "d7fde9c245a9886df8a2d8befefaa8ef4239edbe53c8deeaea7b1e9d84932c6e"
+  },
+  {
+    "id": "ccar_395_event_technical_investigation-7",
+    "title": "ccar_395_event_technical_investigation",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/ccar_395_event_technical_investigation.md",
+    "content": "调查组职责\n\n调查组负责查明事实情况、分析事件原因、作出事件结论、提出安全建议并完成调查报告。调查并非日常排故的替代流程；在航空器或发动机出现异常时，现场处置、故障隔离和恢复使用仍应依据适用的经批准维修数据、运行程序及授权体系执行。",
+    "content_hash": "b2c1dce94701d2b1235ef3d45f692928b01798c28c1fdbdae176cc53f3671f2d"
+  },
+  {
+    "id": "ccar_395_event_technical_investigation-8",
+    "title": "ccar_395_event_technical_investigation",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/ccar_395_event_technical_investigation.md",
+    "content": "调查组法定职权与证据保护\n\n调查组可决定封存、启封和使用与航空器运行、保障有关的文件、资料、记录、物品、设备和设施；要求运行、保障、设计、制造、维修等单位提供情况和资料；决定现场隔离；以及对航空器及其残骸进行保存、检查、拆卸、组装、取样和验证。发现可能构成事件的异常时，应防止擅自改动、销毁或伪造相关记录和证据，并按适用程序及时报告。",
+    "content_hash": "bd288d24b75b824096abb26ed4b8a9a9ead93551fc9300f4aab54387b98b1e3a"
+  },
+  {
+    "id": "ccar_395_event_technical_investigation-9",
+    "title": "ccar_395_event_technical_investigation",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/ccar_395_event_technical_investigation.md",
+    "content": "调查报告与安全建议\n\n调查报告草案经审议发现问题的，应当补充调查或者重新调查。调查期间可及时向有关部门、单位、国家以及国际民航组织提出加强和改进航空安全的建议。事故和严重征候最终调查报告原则上应在事发后十二个月内依法及时向社会公布；未能按期公布的，应在事件周年日公布调查进展情况。安全建议的目标是预防类似事件或降低后果，不是对责任作出认定。",
+    "content_hash": "05e837cec944ea3918ae23bc153b66e69beae5a888a526c0d2db8790af58a153"
+  },
+  {
+    "id": "event_technical_investigation_manual-1",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "调查定位与维修问答边界\n\n事件技术调查用于预防类似事件再次发生，不用于分摊过失或责任。涉及发动机、螺旋桨、部件或维修记录的问答，调查手册可支持“应保存哪些事实和证据、如何形成调查分析”的原则性说明；不得据此生成具体机型的拆装、检查间隔、性能限值或放行结论。此类内容必须以现行、经批准的机型维修数据为准。",
+    "content_hash": "b7f77341b398b6555990bddd445da9e46bc8be978824639dbc439abba1a78343"
+  },
+  {
+    "id": "event_technical_investigation_manual-2",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "先遣人员与现场保护\n\n调查组到达前，先遣人员应与现场应急指挥机构联系，提出现场保护要求，保护现场、航空器、残骸及相关设备，防止进一步破坏以及残骸失窃、移位或不当处置造成的证据灭失。搜寻救援阶段以抢救人员、保护财产为主，同时尽量保护现场痕迹和物证，并记录应急救援造成的现场变化。",
+    "content_hash": "2adea08cab0327250bc138f36d04d55395e8b0e931c411a3ef9052c64a741d99"
+  },
+  {
+    "id": "event_technical_investigation_manual-3",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "易失证据与记录器保护\n\n先遣人员应及时收集、保护重要证据；对记录器和易失物证应注意及时拍照、摄像、采样、收集并作书面记录。除救援工作需要外，应尽可能保持驾驶舱原始状态，避免扳动操纵手柄、电门、旋钮或改变仪表指示和无线电频率等可能破坏原始状态的行为。应急救援结束后，应安排监护直至向调查组移交。",
+    "content_hash": "0d7f9a17cc51f722d5a0f9f205e614f382e51cbfe5a6ba45c9c8bf90cf549708"
+  },
+  {
+    "id": "event_technical_investigation_manual-4",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "残损航空器必须移动时的原则\n\n如残损航空器或残骸妨碍机场、道路等公共设施使用而必须移动，应向组织事件调查的部门报告。移动前应对现场拍照、摄像并绘制草图，标注主要部件、移动路径和状态标记；移动时尽量避免破坏航空器、残骸和现场痕迹，距离应尽可能短；同时记录移动过程中产生的损坏和变化。是否移动、如何移动应由适用的应急与调查程序决定。",
+    "content_hash": "075191855bc29264861127ed771b6c4f64953be9670db3f247c0a261adb681f1"
+  },
+  {
+    "id": "event_technical_investigation_manual-5",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "调查所需的维修与发动机资料\n\n调查报告的事实资料可包括维修记录和维修文件、适航指令及维修服务通告执行情况、改装情况。涉及发动机时，可收集每台发动机的型号、制造厂家、装机位置、序号、装机日期、总使用时间、总热循环次数、大修时间和维修记录等；涉及附件故障时，可收集附件制造商、型号、型别、部件和序列号、寿命或循环限制、工作时间及大修后工作时间等。资料收集应遵循调查授权和记录控制要求。",
+    "content_hash": "2d4765d2bf186d659d968ea4b9252ea78756472c13554d3df0e64a7eed3cd08e"
+  },
+  {
+    "id": "event_technical_investigation_manual-6",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "故障事实与放行信息的记录\n\n调查中应列出已知故障，说明是否可按航空器最低设备清单放行以及是否为重复性故障；没有故障也应明确说明。该信息用于建立事实基础，并不等于模型、调查人员或任何非授权主体可以作出放行决定。最低设备清单适用性、故障隔离和放行均须由运营人获批程序和授权人员确认。",
+    "content_hash": "0db361f01cad2c66c9837a9e51db458142b2ecc8883d554b6c8e3b07a0015411"
+  },
+  {
+    "id": "event_technical_investigation_manual-7",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "专业小组报告的证据链\n\n专业小组完成现场调查、专项试验和验证后，应对掌握的证据和事实研究分析并形成小组报告。报告通常包括：调查过程与获得的事实信息、试验资料；事实与事件结果的逻辑分析以及未解决问题；基于已查明事实的发现和结论；以及针对安全问题已采取或拟采取的改进措施。小组报告由成员审阅签名后提交调查组。",
+    "content_hash": "9c359ef17fa747f820835bc30f26310b5d32ec6d0fa576b801d5747a3ea54dd2"
+  },
+  {
+    "id": "event_technical_investigation_manual-8",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "分析、结论与不确定性表达\n\n分析应基于事实资料讨论、评估和研究，建立事实与结论的逻辑联系并回答“为什么发生”；分析不应加入新的事实。结论包括调查发现以及原因和促成因素。无充分证据确定原因时，应明确尚未查明原因，并可说明最大可能原因；应以尽量降低过失或责任影响的方式表述原因和促成因素。",
+    "content_hash": "a67a59782b6c68560361a0968cacc2a8b8cae6936b71b3dc57041b2056d34bfe"
+  },
+  {
+    "id": "event_technical_investigation_manual-9",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "安全建议的证据要求\n\n安全建议应根据调查得出的原因、促成因素和其他暴露的安全缺陷制定，并应有对应的事实信息和分析支持其合理性与有效性。建议应明确需要采取措施的方面，由接收方制定具体落实措施；调查中如必须在事实尚不完整时提出建议，应进行更多研究、检查或验证，并考虑落实对安全、运行和资源的影响。",
+    "content_hash": "95202f800f83cc2810c5e5234a10bacb3ec97010f416429fd2be7039998ea73c"
+  },
+  {
+    "id": "event_technical_investigation_manual-10",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "调查期间的紧急安全建议\n\n如组织调查的部门认为有必要立即采取措施加强航空安全，可在调查任何阶段提出安全建议；调查期间提出的建议及已采取的安全改进或预防措施，应纳入最终调查报告的安全建议部分。紧急安全建议仍应由有权调查组织依程序提出；智能体可提示保存证据、停止超出授权的操作并联系运营人或维修组织，但不能自行发布安全建议或替代监管决定。",
+    "content_hash": "c08e3fec6e21c2fd910ad7ce6f38ca59771e26a2f8863c9bedc1872e51a144e5"
+  },
+  {
+    "id": "event_technical_investigation_manual-11",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "事件发生后的资料封存范围\n\n组织事件调查的部门收到事件通知后，应立即提醒与航空器运行、保障有关的运营人、空管、油料、运输、机场等单位封存资料。封存范围可包括飞行日志、飞行计划、通信导航监视和气象资料；飞行人员训练、检查和健康记录；航空器证照、履历、维护工具和维护记录；油料、气体及化验记录和样品；地面电源、气源、除防冰设备及相关记录；载重平衡、货物危险品、安保和影像资料等。具体范围由事件性质和调查授权确定。",
+    "content_hash": "5ac862f7fc9496c3046402588d5a5f61a9b4fd7d20ec8815ed520790b670c04b"
+  },
+  {
+    "id": "event_technical_investigation_manual-12",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "易失证据的优先保护\n\n记录器和易失证据可能因残骸位移、冰或烟灰沉积物消失、腐蚀锈蚀、地面痕迹消失或污染而失去证据价值。调查中应及时对重要证据拍照、摄像、采样、收集并作书面记录。对运行或维修异常，未经授权不得为“恢复运行”而先行清除痕迹、改写数据、拆换可疑部件或丢弃消耗品样品。",
+    "content_hash": "cfd6505d7815ee40d994b2add8926d09c8ed2bc3bba81a25d807ddb57ef13a82"
+  },
+  {
+    "id": "event_technical_investigation_manual-13",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "现场危险源识别与进入边界\n\n现场勘察前应识别环境、危险物质、生物、材料和心理等危险源；常见风险包括火和易燃物、储能设备、压缩气体、易爆物、不稳定残骸、复合材料和有毒污染物。现场危险未妥善处置前，调查人员不应进入。对危险性极大的风险应停止工作、协调专业力量清除或隔离；调查人员的职责是调查，而非自行灭火或排除危险物质。",
+    "content_hash": "85602e0180bb2d3aee1048b58ec7bb4c3741e8b46bf2a5e7ad9e173608f12fca"
+  },
+  {
+    "id": "event_technical_investigation_manual-14",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "现场安全防护与残骸处置\n\n现场应指定安全防护负责人，向进入人员说明风险并提供必要防护装备。对有毒物、放射性物质、传染病源、可燃液体、残骸颗粒和烟雾采取相应防护；高压容器、电瓶等移至安全地带处置前，应测量并记录其散落位置和状态；不稳定残骸应加固或清理，并用警戒线隔离危险区域。任何处置都应在不破坏证据的前提下按调查程序进行。",
+    "content_hash": "1523423dab900b4fdb2a60fb74cc13a52612bb68df52db1a859f8c2d258fd243"
+  },
+  {
+    "id": "event_technical_investigation_manual-15",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "一般现场勘查的记录要素\n\n一般勘查用于掌握事件地点、地理环境、残骸基本情况、接地或接水状态、现场痕迹及残骸分布。应确定并记录撞击点的经纬度和海拔、地形地貌、周围环境以及与城市、机场或导航台等参照点的方位和距离。现场定位、照片、示意图和文字记录相互补充，不能以单一照片或口述代替完整记录。",
+    "content_hash": "6827af10cf2ba1d17636cf5a06bfc8bbf7b275a827398bff8da2dcf689a3b314"
+  },
+  {
+    "id": "event_technical_investigation_manual-16",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "残骸分布、标识与碰撞痕迹\n\n现场勘查应尽量确定机翼、尾翼、发动机、螺旋桨及操纵面的位置和完整性；对缺失部件按需要组织搜寻。残骸和重要碰撞痕迹应使用独立编号标识并汇集记录。残骸分布图可记录第一撞击点、主要部件和发动机位置、主要散落物及相关痕迹。碰撞痕迹、残骸破坏和分布只是在与记录、试验和其他事实综合后，用于分析飞行状态和发动机动力状态的证据，不能单独得出失效结论。",
+    "content_hash": "91a6f9871ee87c0bfeb2a71b8e6ab908ba86df681b37fc7745567f9f46c060f7"
+  },
+  {
+    "id": "event_technical_investigation_manual-17",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "现场影像资料的管理\n\n现场拍摄应校对电子相机系统时间，重要照片应遵守保密要求并归档，不应由个人私自保存。现场物品移动前、移动中、移动后均应拍照和录像，尤其记录地面痕迹。调查可按需要取得救援灭火影像、目击者影像、机场或空管监控及航拍资料，并尽可能记录拍摄位置和获取过程，以便后续核对。",
+    "content_hash": "a958d24e8c26ee48ea88a15955672909fbb8ce939c84bf4ec77c80f61a3ecec9"
+  },
+  {
+    "id": "event_technical_investigation_manual-18",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "适航维修调查的工作范围\n\n适航维修调查可核查航空器证照、基本情况和运行历史，调查关键系统状态、结构、设计制造维修情况，收集快速存取记录器和其他非易失性存储介质，开展残骸管理及适航维修文件和维修管理调查。事件发生后可封存航线和定检维修记录、重要修理和改装记录、维修和放行人员的资质授权资料，以及油料、气体和航空化学用品的记录与样品。",
+    "content_hash": "ceb5e5e71d62569ab13a91a3614083f833d0b76f5f61c1400c8b00ef4f54e468"
+  },
+  {
+    "id": "event_technical_investigation_manual-19",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "动力装置调查与维修记录分析\n\n现场适航维修调查可包括航空器系统、结构和动力装置调查，以及非易失性存储器和卫星导航存储器的收集。调查结束后，应梳理航空器维修经历，审查所收集的适航维修信息和调查结果，再进行技术原因分析、形成小组结论和安全建议。该流程用于事件调查，不能替代发动机维修手册的故障隔离、部件判废或放行程序。",
+    "content_hash": "39a8e4e2be2cbfc63c3df17bda2e6232f2772874d58bab788ac2e2983060e8a2"
+  },
+  {
+    "id": "event_technical_investigation_manual-20",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "飞行记录器与非易失性存储器\n\n飞行记录器是调查事实信息的重要来源，启动调查后应尽快下载其数据。移除前应评估其信息价值、其他渠道是否可获得信息以及能否原位复制。对含非易失性存储器的机载设备应准备设备清单并重点搜集保护；外壳破损的电子设备在现场、运输和试验中尤其要防止静电损坏。读取、译码和试验应使用适用的机构、测试台、方案和操作规程。",
+    "content_hash": "1c10766be4de7fe2594a96b893f0a576aa0bc6e00a9d1c131247a26c9f4d3d40"
+  },
+  {
+    "id": "event_technical_investigation_manual-21",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "试验验证的适用条件\n\n现场资料、证词和证据整理分析后，对仍有疑点或尚待证实的信息，可实施必要试验验证以支持原因分析。项目可涉及飞行数据分析、模拟仿真、失效分析、非易失性存储器、机载设备测试、系统检测、性能验证、理化检测、雷达数据、残骸拼接和影像分析。试验应由具备相应资格、技术能力和设施的机构实施，并在调查组监督下完整记录。",
+    "content_hash": "c4b0c29afcb5ad77c494a4235c7dde525b779ba9c67f507d5aed107595569c2b"
+  },
+  {
+    "id": "event_technical_investigation_manual-22",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "试验件拆取与标识\n\n获取试验件前应记录其现场状态和周围环境；拆取前应标注其机上位置，尽可能保留设备、管路、线路、结构件的标牌和标记。试验件宜保持原状、尽量完整，并保留相连系统部件；确需分解或切割时，应先记录原始状态并从不影响结果的部位进行。试验件拆取应始终处于调查组控制之下，拆下后应标注名称、件号、序号、事件编号和拆取时间，并建立清单。",
+    "content_hash": "395a8892988b0030eee3cb26fed54af67ec60302dd25d97c36f15dd4a1eeeba6"
+  },
+  {
+    "id": "event_technical_investigation_manual-23",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "断口、电子件和动力装置试验件运输\n\n试验件应防止二次损坏和证据破坏：断口避免接触和碰撞，易腐蚀部件及时防腐，电子电器设备防静电和磁场，表面痕迹、漆层、烟迹和灰迹应受保护。动力装置宜使用专用支架和包装箱运输；重型部件应固定防移动，电子线路板应使用防静电袋。包装箱应有标签、装箱清单和必要的易碎、防潮、勿压等标志；运输和开箱时应记录外观与试验件状态。",
+    "content_hash": "0f5cad86235ca2b87396e66fe893ccd57630ce52ec23dcd8ba41f00b53a1b175"
+  },
+  {
+    "id": "event_technical_investigation_manual-24",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "试验方案与事发条件的可比性\n\n试验方案应说明背景、目的、项目、类型和范围，并尽量提供试验件现场状态、环境信息和履历，如件号、序号、生产和装机日期、累计使用时间、大修后使用时间、故障或使用困难报告、修理与检测记录。实施试验时应尽可能采用或模拟事发条件，真实记录条件、操作、现象和数据；模拟机、平台或构型与实际的差异应被记录并分析其对结果的影响。",
+    "content_hash": "610e293a86d054e635dc973376de5620de0c25a1fb3459588a2162d1773393ad"
+  },
+  {
+    "id": "event_technical_investigation_manual-25",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "发动机残骸的分析原则\n\n发动机残骸分析可根据转动部件、操纵机构、调节机构和其他机件的位置、状态及损伤，研判事件过程中的发动机工作状态。应通过残骸拼凑区分初始破坏件、二次破坏件、坠毁损坏件和烧伤件；对功能性故障应确认故障并分析其原因和影响。发动机分解检查用于寻找故障部位或初始破坏件；分解附件前通常应先进行局部试验和影像记录。",
+    "content_hash": "605814b555602cc5bdd7f9f55024698c58fa015ec6f0c20ea55fea8a9cee0092"
+  },
+  {
+    "id": "event_technical_investigation_manual-26",
+    "title": "event_technical_investigation_manual",
+    "category": "caac_event_investigation",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/caac_event_investigation/event_technical_investigation_manual.md",
+    "content": "记录数据与试验结论的复核\n\n记录器数据译码前应取得并验证准确的译码数据库；译码结果应检查错误数据、分析其原因并进行适当纠错，避免不准确数据导致错误结论。飞行信息宜与其他专业小组共同综合分析。试验完成后应核实试验记录、讨论结果，由具备资质的试验机构人员签署试验报告；试验件、报告、资料和数据应收回并受调查信息控制。",
+    "content_hash": "27b17378cfb3bff9b96ba50b861f9b7a8275cbc6ade08731b566835ae95a6163"
+  },
+  {
+    "id": "engine_over_temperature-1",
+    "title": "engine_over_temperature",
+    "category": "engine_manual",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/engine_manual/engine_over_temperature.md",
+    "content": "EGT超限的初始记录\n\n发动机排气温度超过适用工况限制、持续偏高或出现异常趋势时，应记录峰值、持续时间、发生阶段、发动机转速或功率、环境和其他可用发动机参数、告警信息及机组处置。参数的限值、超限定义和数据记录要求必须使用当前适用的发动机与航空器批准数据。",
+    "content_hash": "aefd52963b0a2554d79c61ff66a8a3867fe95d66f87dc9df9acea7168c460485"
+  },
+  {
+    "id": "engine_over_temperature-2",
+    "title": "engine_over_temperature",
+    "category": "engine_manual",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/engine_manual/engine_over_temperature.md",
+    "content": "EGT指示系统的完整性核对\n\n在判断高温来源前，应按适用数据核对温度传感器、线束、接插件、安装状态以及指示和采集通道。传感器或线路问题可能产生不可信指示；反之，单纯将异常归为仪表问题也可能遗漏真实热端风险。检查、测试和更换必须由授权人员按经批准维修数据实施并形成记录。",
+    "content_hash": "d4fee552135f4980a3c57f0873bdd085645f0334ac0556aa8e52a412131ff0a7"
+  },
+  {
+    "id": "engine_over_temperature-3",
+    "title": "engine_over_temperature",
+    "category": "engine_manual",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/engine_manual/engine_over_temperature.md",
+    "content": "EGT与运行状态的联合分析\n\n风险排查应比较温度变化与转速、功率设定、加减速过程、环境条件、燃油与其他发动机参数的关系，并与同一发动机历史趋势或可用基准进行核对。单一峰值不足以单独确定故障部位；持续超限、趋势恶化、重复告警或伴随性能下降时，应提高风险等级并进行专业评估。",
+    "content_hash": "e2b32fbb5ac82bcb16656b95f679671db369974e9968ef27336f222d7ed9cf75"
+  },
+  {
+    "id": "engine_over_temperature-4",
+    "title": "engine_over_temperature",
+    "category": "engine_manual",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/engine_manual/engine_over_temperature.md",
+    "content": "燃油与燃烧相关风险区域\n\n确认测量链可靠后，温度异常的故障隔离可由授权维修人员依据适用发动机维修手册评估燃油喷嘴、燃油供给与控制、燃烧室以及相关气路的状态。任何具体清洁、拆装、流量检查、喷嘴判废或调节作业均需要对应机型的批准程序、工具和限值；本知识库不提供替代性操作步骤。",
+    "content_hash": "7c3889fe7219e43e7c6af0bf0e856e84a0203bb103992040e5322d4a529e0425"
+  },
+  {
+    "id": "engine_over_temperature-5",
+    "title": "engine_over_temperature",
+    "category": "engine_manual",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/engine_manual/engine_over_temperature.md",
+    "content": "热端与冷却相关风险区域\n\n对持续超限或伴随性能变化的情形，可按适用维修数据评估涡轮、冷却通路、排气通道及相关部件状况。检查结果应区分运行后损伤、既有缺陷和拆检过程产生的二次影响；如需孔探、拆检、试验或部件处置，必须由具备资格的人员按批准数据决定。",
+    "content_hash": "88ec0c72efa29a107c2fbefd4f72b85b47977cdc850ac712452e32c14e9ad60a"
+  },
+  {
+    "id": "engine_over_temperature-6",
+    "title": "engine_over_temperature",
+    "category": "engine_manual",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/engine_manual/engine_over_temperature.md",
+    "content": "EGT超限的适航风险核查\n\n高温事件应结合发动机构型、维修履历、累计时间和循环、近期部件更换、适航指令和服务通告符合性、既往相似故障以及发动机性能趋势综合评估。适航指令可能规定特定部件、构型或时限的检查和更换；在未确认适用性与符合性之前，不得凭通用经验认定已满足持续适航要求。",
+    "content_hash": "bf5b18198aa90ac11856a7abdfb4376c68636c781c4881f3e2b6c7ba21b450be"
+  },
+  {
+    "id": "engine_over_temperature-7",
+    "title": "engine_over_temperature",
+    "category": "engine_manual",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/engine_manual/engine_over_temperature.md",
+    "content": "EGT超限后的闭环与放行边界\n\n维修或检查完成后，应按适用程序复核相关数据、维修记录和必要的功能或性能检查结果。智能体只能提示需要复核的资料类别，不能确认缺陷已排除、签署维修记录或作出放行决定。若超限持续、重复或证据不足，应由授权维修组织依据现行批准数据作出后续处置。",
+    "content_hash": "daf2c3ccd353ab149ac7b91cd55ad15c46028c038bb9ee46b02c10d0bf91ea22"
+  },
+  {
+    "id": "engine_vibration-1",
+    "title": "engine_vibration",
+    "category": "engine_manual",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/engine_manual/engine_vibration.md",
+    "content": "振动异常的初始信息记录\n\n发现发动机振动值异常、趋势升高或重复出现时，应记录振动参数、对应转速或工况、发生时间、持续时间、变化趋势、告警信息以及同时出现的其他发动机参数。应保留原始数据和相关运行、维修记录，避免只记录“振动高”而无法判断其与工况、转速或既往缺陷的关系。",
+    "content_hash": "932170c4dc46a4e201e4ed6f203c86a868096b26de71c749a9c258a33f5867eb"
+  },
+  {
+    "id": "engine_vibration-2",
+    "title": "engine_vibration",
+    "category": "engine_manual",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/engine_manual/engine_vibration.md",
+    "content": "振动与转速和工况的关联核对\n\n振动排查的首要目标是确认异常是否与发动机转速、功率设定、加减速、特定飞行阶段或地面运行状态具有稳定关联。相同振动读数在不同转速和负荷下的意义可能不同；智能体可协助梳理需要比对的数据，但不能据此判定振动来源、平衡状态或继续运行条件。",
+    "content_hash": "968f111feab4e2a24e53c6e4584ed20f4b625f9fa7c3d4d0e7e3ec082a6d4639"
+  },
+  {
+    "id": "engine_vibration-3",
+    "title": "engine_vibration",
+    "category": "engine_manual",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/engine_manual/engine_vibration.md",
+    "content": "振动测量与信号链核查\n\n在将振动判断为机械本体问题前，应核对传感器安装状态、线束磨损、屏蔽和接插件接触情况，并复核信号调理、数据采集或显示通道的可靠性。测量链异常和机械异常可能表现相似；未经适用维修数据规定的检查、测试和记录，不应把单次指示直接作为部件失效结论。",
+    "content_hash": "ac55b22956d18ede1d7d430ab42d99c4db8abcf42e88687496a17a51c4fec708"
+  },
+  {
+    "id": "engine_vibration-4",
+    "title": "engine_vibration",
+    "category": "engine_manual",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/engine_manual/engine_vibration.md",
+    "content": "机械本体的重点风险区域\n\n确认测量和信号链无异常后，持续升高的振动应由授权维修人员按适用数据评估轴承、转子组件、叶片和传动连接等风险区域。检查关注点可包括磨损、剥落、润滑异常、松动、配平部件缺失、叶片损伤或积垢不均、连接不对中等。具体检查方法、允许损伤和处置门槛必须以现行机型和发动机维修数据为准。",
+    "content_hash": "631159fc2c5b5db4c0c6c159e23a80dc60b1a62912f61d80611bd45bbbfb43e3"
+  },
+  {
+    "id": "engine_vibration-5",
+    "title": "engine_vibration",
+    "category": "engine_manual",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/engine_manual/engine_vibration.md",
+    "content": "振动异常的资料与构型核查\n\n风险排查应结合发动机序号和构型、近期拆装或部件更换、维修和放行记录、适航指令或服务通告符合性、累计使用时间和循环、既往振动趋势及重复故障情况。对涉及受影响部件的适航指令，必须先确认适用性、版本和符合性时间；不得以“型号相同”或历史经验代替构型和件号核对。",
+    "content_hash": "680c1f1e879a5ceec84a4f0a1c2f411ca5a153ba411424e7b446224e3e91511a"
+  },
+  {
+    "id": "engine_vibration-6",
+    "title": "engine_vibration",
+    "category": "engine_manual",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/engine_manual/engine_vibration.md",
+    "content": "振动异常的升级边界\n\n若振动持续升高、重复发生、伴随其他发动机参数异常或性能变化，或无法排除测量与机械风险，应转交授权维修人员依经批准数据完成故障隔离和适航评估。需要拆检、孔探、频谱分析、动平衡或部件更换时，智能体只能提示可能需要的专业评估，不能规定具体作业、签署放行或建议带故障运行。",
+    "content_hash": "85ab13befaf5280bdf2ab30fd3b756f1a1917b88f13171db049da58468a4ac46"
+  },
+  {
+    "id": "engine_vibration-7",
+    "title": "engine_vibration",
+    "category": "engine_manual",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/engine_manual/engine_vibration.md",
+    "content": "振动事件的证据保全\n\n当振动异常可能构成需报告或调查的事件时，应按适用程序保留原始参数、维修记录、构型资料和相关部件状态。未经授权不应为了恢复运行而改写数据、丢弃可疑部件或清除可能影响分析的痕迹。调查需要时，部件的拆取、标识、包装和运输应遵循证据保护程序。",
+    "content_hash": "b2dcfb54ca17ab2589c3873874b38668a8468332b008dc8ea9614aeb3d9b71d6"
+  },
+  {
+    "id": "engine_fault_risk_triage-1",
+    "title": "engine_fault_risk_triage",
+    "category": "maintenance_risk_control",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/maintenance_risk_control/engine_fault_risk_triage.md",
+    "content": "风险排查的目标和边界\n\n发动机故障检测的目标是尽早发现异常、保存可验证事实、确定需要进一步检查的风险区域并支持授权人员决策。智能体输出应作为信息梳理和检索辅助，不替代故障隔离手册、发动机维修手册、适航指令、最低设备清单、持续适航管理程序或放行人员的判断。",
+    "content_hash": "55f2afe8a5d136a3578cb94a391e29fb491dc009f3ac25e21de628b3965e432d"
+  },
+  {
+    "id": "engine_fault_risk_triage-2",
+    "title": "engine_fault_risk_triage",
+    "category": "maintenance_risk_control",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/maintenance_risk_control/engine_fault_risk_triage.md",
+    "content": "异常的四类证据\n\n发动机风险排查应综合四类证据：参数和告警趋势；可见状态和部件检查结果；维修、构型、使用时间和循环等记录；以及适用的持续适航要求。任何单一证据均可能不完整或不可靠。应识别相互支持或相互矛盾的信息，记录尚未确认的部分，避免把推测表述为故障事实。",
+    "content_hash": "0572133355f4c14881b19dd4ac8f8dd484586f616ef47d00717683871d948c1a"
+  },
+  {
+    "id": "engine_fault_risk_triage-3",
+    "title": "engine_fault_risk_triage",
+    "category": "maintenance_risk_control",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/maintenance_risk_control/engine_fault_risk_triage.md",
+    "content": "参数趋势优先于孤立数值\n\n对振动、温度、压力、转速或性能类异常，应尽量保留原始记录并比较发生前后趋势、不同工况、重复性及与其他参数的关系。参数趋势用于提出排查方向，不直接替代经批准的限值判断。具体阈值、采样方式、趋势基准和允许偏差以现行适用数据为准。",
+    "content_hash": "fd37f8f31ed265c779e3170140caaaefd187f00a971a0e916baefd2c08782714"
+  },
+  {
+    "id": "engine_fault_risk_triage-4",
+    "title": "engine_fault_risk_triage",
+    "category": "maintenance_risk_control",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/maintenance_risk_control/engine_fault_risk_triage.md",
+    "content": "故障检测中的测量可信度\n\n任何仪表参数在用于故障判断前，都需要考虑传感器、线束、接插件、安装状态、信号处理和采集显示通道的可信度。发现数据与物理状态、同类参数或历史趋势明显不一致时，应将“测量链核查”与“机械或系统风险排查”并行考虑，而不是先入为主地选择其一。",
+    "content_hash": "0eedd71d96149a59008c108287d5be5d5a35f519a91c7b79a5989827a4213a7a"
+  },
+  {
+    "id": "engine_fault_risk_triage-5",
+    "title": "engine_fault_risk_triage",
+    "category": "maintenance_risk_control",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/maintenance_risk_control/engine_fault_risk_triage.md",
+    "content": "维修记录和构型的作用\n\n维修记录可用于核对近期拆装、更换、修理、改装、检查和放行信息；构型资料可用于确认发动机和受影响部件的型号、件号、序号及装机状态；使用记录可用于核对时间、循环和事件发生阶段。这些资料共同决定某项手册任务、服务通告或适航指令是否适用，不能缺项替代。",
+    "content_hash": "b25f0a246cb89afb0f12da9ed0abaa58841c8b8bd92f45521c546df293c92d20"
+  },
+  {
+    "id": "engine_fault_risk_triage-6",
+    "title": "engine_fault_risk_triage",
+    "category": "maintenance_risk_control",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/maintenance_risk_control/engine_fault_risk_triage.md",
+    "content": "适航指令风险筛查\n\n检索到适航指令时，应依次确认发动机和部件适用性、指令版本与替代关系、符合性时间、已执行措施和记录完整性。适航指令属于强制性持续适航要求；尚未确认符合性时，不能通过模型建议、同类机经验或非批准替代方法推断航空器仍可放行。",
+    "content_hash": "f75c10cb36aa600975aa24d82f6ec671b26ad7af8d8137c21ffb2c3dad56d79b"
+  },
+  {
+    "id": "engine_fault_risk_triage-7",
+    "title": "engine_fault_risk_triage",
+    "category": "maintenance_risk_control",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/maintenance_risk_control/engine_fault_risk_triage.md",
+    "content": "重复故障和趋势恶化\n\n同一参数或同一部件相关异常重复发生，或趋势随时间恶化，应将其作为需要重新审查维修履历、构型变化、适航要求和故障隔离结果的信号。重复并不自动说明根因相同；每次异常的工况、参数、处置和检查结果都应保留，以支持授权人员进行差异比较。",
+    "content_hash": "7399d11fca44d2ea8487142f15df70ea4b23938945e51db6199baf7debd5101e"
+  },
+  {
+    "id": "engine_fault_risk_triage-8",
+    "title": "engine_fault_risk_triage",
+    "category": "maintenance_risk_control",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/maintenance_risk_control/engine_fault_risk_triage.md",
+    "content": "发现可疑部件时的证据控制\n\n若可疑部件可能用于事件调查、失效分析或持续适航判断，应保留其拆前状态、安装位置、件号、序号和关联记录。避免未经授权的清洁、修磨、分解、切割、混放或丢弃。确需拆取、试验、包装或运输时，应按组织程序和适用调查要求维护标识、清单和状态记录。",
+    "content_hash": "9b38aaefe8875a0dbb9f61c4056e362178ae54a01fb5b1111d0e287d8a33550e"
+  },
+  {
+    "id": "engine_fault_risk_triage-9",
+    "title": "engine_fault_risk_triage",
+    "category": "maintenance_risk_control",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/maintenance_risk_control/engine_fault_risk_triage.md",
+    "content": "高风险情形的转交原则\n\n异常持续或重复、多个发动机参数同时异常、出现性能变化、无法确认测量可信度、涉及可能适用的适航指令，或需要孔探、拆检、台架试验与部件处置时，应及时转交具备相应授权的维修人员或工程支持。智能体不应建议绕开检查、延后强制性任务或在证据不充分时恢复运行。",
+    "content_hash": "cdfbad6fdf0cc42c42f4f104fa7cf4453bd0981982c16f2fae190301c62df619"
+  },
+  {
+    "id": "engine_fault_risk_triage-10",
+    "title": "engine_fault_risk_triage",
+    "category": "maintenance_risk_control",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/maintenance_risk_control/engine_fault_risk_triage.md",
+    "content": "维修措施后的验证闭环\n\n故障排查和维修措施完成后，应依适用程序核对执行的批准数据、构型恢复、工具和部件记录、功能或性能检查结果以及维修记录完整性。验证的目的在于确认所执行工作与适用要求一致，不是由模型自行认定适航状态。任何最终放行仍须由授权人员完成。",
+    "content_hash": "a3d7caaa49b3d00c5deb2b9542fc3b344383b0486b8ec1ec2f3cb32c43551830"
+  },
+  {
+    "id": "engine_fault_risk_triage-11",
+    "title": "engine_fault_risk_triage",
+    "category": "maintenance_risk_control",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/maintenance_risk_control/engine_fault_risk_triage.md",
+    "content": "调查程序与日常维修的区分\n\n当异常可能构成民用航空器事件时，资料封存、现场保护、记录器下载、部件取证和试验验证需要依事件技术调查程序开展；日常维修则依经批准维修数据和运营人程序实施。两类活动都重视记录和证据，但不能把调查性拆检或调查结论直接替代日常维修签署与放行程序。",
+    "content_hash": "e8f6e94c09c5fc9b5cf6fd9331b5693ce59c4b098d539bc8457717f9ffc6f0c1"
+  },
+  {
+    "id": "engine_fault_risk_triage-12",
+    "title": "engine_fault_risk_triage",
+    "category": "maintenance_risk_control",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/maintenance_risk_control/engine_fault_risk_triage.md",
+    "content": "智能体回答的安全表达\n\n对于具体发动机异常，回答应先说明已检索到的风险事实与不确定性，再列出需由授权人员依据适用数据核对的参数、记录、构型或部件类别。回答不得编造机型限值、检查周期、适航指令符合性、部件寿命或放行结论；证据不足时，应明确说明知识库未检索到足够依据。",
+    "content_hash": "88a31f3e1c818c47b9c0a631f8c41f1705d3cdb9a1bbf7d3d851043a5583ff72"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-1",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "通用维修资料的使用边界\n\n通用发动机维护资料可用于理解系统原理、建立检查思路和识别风险信号，但不能取代制造商现行的维修手册、故障隔离手册、服务通告、适航指令及运营人经批准程序。任何部件限值、检查间隔、清洁剂、工具、拆装方法、试验条件和放行要求，均须以具体发动机与航空器的批准数据为准。",
+    "content_hash": "27761f53d2b281cc10b0a16aebf5a9888d74dca8c7393b2cb26c2e65c7f691bd"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-2",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "多参数关联的故障检测\n\n发动机异常应结合转速、温度、燃油流量、压力、振动、滑油参数和性能表现进行关联分析。某一参数异常可能来自实际系统状态，也可能来自探头、线路、变送器、指示或数据采集通道。排查时应保留原始趋势，比较相同工况下的历史数据，并将“指示可信度核查”和“系统或部件检查”作为可并行的路径。",
+    "content_hash": "ff44d05e889f7102524c0ed1f4a56343b9541943cfe2a71f36f136322b204e08"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-3",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "压气机污染与性能风险\n\n压气机吸入的尘土、油污、烟尘或其他异物可在机匣、导向叶片和叶片表面形成沉积，降低空气动力效率。性能劣化可表现为加速不良或排气温度偏高等风险信号。发现这类信号时，应按适用手册核对进气道、压气机可视状态和清洁要求；不得因看到沉积物就自行推定损伤程度或进行未经批准的清洁和修磨。",
+    "content_hash": "deb7df572e06a69de432332e7f84007b962517a7dbc3e0fa3f9c05e739165e72"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-4",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "压气机叶片异物损伤风险\n\n松散物、环境异物和维护疏忽都可能造成压气机叶片或导向叶片的异物损伤。检查应重点关注前缘、后缘、叶身、导向叶片及可能的裂纹、凹痕、缺口、腐蚀或掉块。检查中应记录受影响位置、形态、范围和相关工况；任何裂纹或损伤的可接受性、修磨范围和后续无损检查要求必须由适用制造商数据决定。",
+    "content_hash": "79c6cb3afb6a2627fde0082ba17ae50b878478789f15818213fdf6f9a93f6604"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-5",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "热端检查的观察重点\n\n热端检查前应关注外部燃烧机匣的热点、排气泄漏和变形迹象；进入后可按适用数据检查燃烧室局部过热、裂纹、过度磨损、涡轮叶片和喷嘴导向叶片的裂纹、变形及异物损伤。热端在高温环境下服役，外观发现不等于直接确认根因；所有可接受性判断和拆检范围均须遵循现行发动机手册。",
+    "content_hash": "2c5bcf0d652b8253a27db008f7818fff4b58febf0cd784bbecac602d976d0a5f"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-6",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "涡轮叶片过热与形变信号\n\n涡轮叶片在高温下更易出现应力断裂裂纹、前缘变形、波浪状形变、叶尖磨损或伸长等风险迹象。若发现此类情况，应按适用程序进一步核对涡轮盘、相邻部件和发动机温度事件记录，并防止将异物撞击痕、既有修磨或运行后痕迹误判为热损伤。不得采用通用尺寸或示意图替代特定发动机的判废标准。",
+    "content_hash": "fa9fa1aee3e88a4eb4ef6095ccfcf68f10d63323199b254fd5a2677eec9b6428"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-7",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "燃油喷嘴的检查与清洁边界\n\n燃油喷嘴沉积物可能影响喷雾特性，检查时还应关注喷嘴组件的缺口、毛刺和污染。清洁方式、介质、干燥和流量/喷雾检查必须使用制造商批准的方法和设备；硬质刮削工具或钢丝刷可能损伤喷嘴并影响喷雾特性。喷嘴是否可继续使用、需清洁、需台架检查或更换，只能依据适用批准数据判定。",
+    "content_hash": "1fc9a8fba310f6cd8fa6df1726508093849eaa24cf1b435e5363f9be561b00ad"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-8",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "EGT异常与指示系统排查\n\n当 EGT 偏高而其他关键参数未显示相应变化时，应将热电偶、并联线束、引线连续性、接地或线间短路、回路电阻、绝缘状态和指示误差列入排查。热电偶在高温氧化环境中可能产生校准漂移。测试应使用适用的专用测试设备和程序；不得以单一显示值直接认定热端损伤，也不得因怀疑仪表就忽略热端检查需求。",
+    "content_hash": "e91d2e287ef5067cef33977bcf6054437137534c2a9408a9040208a45bda6dc3"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-9",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "转速、压力与温度的交叉核对\n\n发动机压力比、转速、温度和燃油流量之间的组合变化可帮助识别应优先核对的方向，例如压力探头或管路、温度测量回路、压气机和涡轮状态、附件、主轴承、引气系统或控制调节状态。该类组合只能用于生成检查假设；确切故障隔离顺序、校准、测试和纠正措施应由对应发动机的制造商资料确定。",
+    "content_hash": "7cd2e3f3a12ee8cc91a1c526a4f975e257fe6b1dc5d29cc83bb93b6d4441ebd7"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-10",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "滑油光谱趋势分析\n\n滑油光谱分析通过检测滑油中悬浮的微量金属元素，为磨损趋势和潜在失效提供早期信息。应记录采样条件、使用时间、既往结果和趋势；某种金属浓度升高可提示进一步检查方向，但不能单独确认具体部件失效。结果应由具备经验的分析人员结合发动机构型、维修记录、磁性堵头、滤网或滤芯检查和其他证据综合判断。",
+    "content_hash": "f320cfc6b4960e3478d40734341ca764b040438e09146a6ba18b7251560de9ba"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-11",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "滑油滤网、旁通与轴承风险\n\n涡轮发动机滑油系统中的主滤网、回油滤网和末端滤网用于拦截污染物；滤网堵塞或压差异常可能导致旁通，旁通时滤油能力下降。小孔喷油嘴和轴承润滑对清洁度敏感，污染物控制、滤网和磁性部件检查均应依适用程序实施。发现污染或金属屑时，应保存检查结果和样品，不得仅清除痕迹后继续作业。",
+    "content_hash": "5e7125302bb8c9595d4b600673a2fb922239d2bf44cca4c3bf2580b93138fb4e"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-12",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "滑油温度、压力与回油系统\n\n滑油温度、压力、油量、滤网压差和相关告警应结合发动机功率状态和趋势分析。回油泵、油气分离、通气、密封和油路状态可能相互影响；单一高温或低压指示不足以确定根因。检查和试验应按适用维修数据进行，尤其不得擅自调节压力控制装置或用非批准方法处理密封、管路和附件问题。",
+    "content_hash": "a09b43ce1987616dc798a51fae06a142504bbc9bdf7c88f2763e9fadec9e7a2a"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-13",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "启动异常的风险识别\n\n启动阶段的转速滞留、温度异常、加速不足、周期性转速波动或滑油压力异常，可能涉及起动系统、燃油供给与控制、喷嘴、空气系统、压气机/涡轮状态、滑油供给或测量指示。启动异常应保留启动参数、环境与处置记录；任何再次启动、试车或故障隔离均须由具备资格的人员依据适用发动机程序实施。",
+    "content_hash": "c8f2da808914c4a826d470f57e155108ee87e971de4dcfc7c26a8e84bc44431a"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-14",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "试车和校准的控制要求\n\n发动机试车、仪表校准、热电偶测试、转速核对和性能确认，应采用适用的经批准设备、技术指令和安全程序。试验条件、设备状态、构型、环境和结果应形成记录。通用故障表示例只能帮助理解可能的检查方向，不能当作某一具体发动机的作业卡或批准的排故步骤。",
+    "content_hash": "7ea4e4f1e6df03de28e102a6092e003aaf9f09a1fb30dc5c3674c5621d1410e9"
+  },
+  {
+    "id": "engine_maintenance_inspection_principles-15",
+    "title": "engine_maintenance_inspection_principles",
+    "category": "public_engine_maintenance",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/public_engine_maintenance/engine_maintenance_inspection_principles.md",
+    "content": "可疑部件的记录和送检\n\n当压气机、热端、燃油、滑油或传感器部件需要送检或用于失效分析时，应记录拆前状态、安装位置、件号、序号、累计时间/循环和关联参数。保护断口、沉积物、表面痕迹和电子部件状态，避免擅自清洗、修磨、拆解、混放或丢弃。送检、包装、运输和试验应遵循组织程序以及可能适用的事件调查证据控制要求。",
+    "content_hash": "59f5eddb5237676cea963c1232c95e0030fc314f255931956d1b20127a09425a"
+  },
+  {
+    "id": "safety_notice-1",
+    "title": "safety_notice",
+    "category": "regulations",
+    "source": "C:/Users/fanjihan/PycharmProjects/huaweiyunmadaojingsai/huaweiyunmadaojingsai/backend/rag/knowledge_base/regulations/safety_notice.md",
+    "content": "# 安全与合规边界\n\n涉及参数超限、液压泄漏或偏离厂家手册、适航指令的情况，应复核最新有效文件和放行标准。\n\n系统生成的建议只作为辅助信息，最终检修和放行结论必须由具备相应资质的维修人员确认并留存记录。",
+    "content_hash": "e464eeba8813cbaa9b50c9fea35c286012c878f75d295102086ee8f2c8a5677d"
+  }
+]

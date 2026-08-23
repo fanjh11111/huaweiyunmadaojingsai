@@ -1,13 +1,31 @@
-from fastapi import FastAPI, UploadFile, File
+from fastapi import Depends, FastAPI, File, Header, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 import numpy as np
 import torch
 import joblib
 import uvicorn
+import os
+import secrets
 from datetime import datetime, timedelta
 
+try:
+    from rag.agent import generate_advice, generate_followup
+    from rag.tool import MaintenanceKnowledgeRetriever, RagToolRequest, RagToolResponse, get_tool_health
+    from rag.chat import get_chat_agent
+except ModuleNotFoundError:  # 允许从项目根目录以模块方式启动
+    from backend.rag.agent import generate_advice, generate_followup
+    from backend.rag.tool import MaintenanceKnowledgeRetriever, RagToolRequest, RagToolResponse, get_tool_health
+    from backend.rag.chat import get_chat_agent
+
 app = FastAPI()
+
+
+def require_rag_tool_api_key(x_api_key: str | None = Header(default=None, alias="X-API-Key")) -> None:
+    """仅保护供外部智能体调用的工具接口，不影响现有前端接口。"""
+    expected_key = os.getenv("RAG_TOOL_API_KEY")
+    if expected_key and not secrets.compare_digest(x_api_key or "", expected_key):
+        raise HTTPException(status_code=401, detail="Invalid RAG tool API key")
 
 # 允许 Vue 前端跨域请求
 app.add_middleware(
@@ -19,9 +37,13 @@ app.add_middleware(
 )
 
 # 1. 加载模型与归一化器
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# 注意：lstm_engine_traced_cpu.pt 在 trace 时内部 hidden 已固化为 CPU 设备；
+# 若本机有 CUDA 而把输入搬到 cuda:0，会报
+# "Input and hidden tensors are not at the same device"。
+# 为保证跨机器演示稳定，推理统一在 CPU 上执行。
+device = torch.device("cpu")
 scaler = joblib.load("engine_scaler.pkl")
-model = torch.jit.load("lstm_engine_traced.pt", map_location=device)
+model = torch.jit.load("lstm_engine_traced_cpu.pt", map_location=device)
 model.eval()
 
 # 2. 核心特征 -> 物理部件映射字典
@@ -392,6 +414,66 @@ async def predict_flight_data(file: UploadFile = File(...)):
             "globalMetrics": global_metrics,
         },
     }
+
+
+@app.post("/api/rag-advice")
+async def rag_advice(payload: dict):
+    """根据预测结果检索本地知识库并生成结构化维修辅助建议。"""
+    return generate_advice(payload or {})
+
+
+@app.post("/api/rag-followup")
+async def rag_followup(payload: dict):
+    """处理查看依据、建议解释、补充检查和单次维修追问。"""
+    payload = payload or {}
+    return generate_followup(
+        payload.get("context") or {},
+        payload.get("action") or "question",
+        payload.get("question") or "",
+    )
+
+
+@app.post("/api/rag-chat")
+async def rag_chat(payload: dict):
+    """维修知识问答智能体对话接口，支持多轮会话与故障上下文注入。"""
+    payload = payload or {}
+    return get_chat_agent().chat(
+        user_message=payload.get("message") or "",
+        session_id=payload.get("session_id"),
+        fault_context=payload.get("fault_context"),
+    )
+
+
+@app.get("/api/rag-chat/sessions/{session_id}")
+async def rag_chat_history(session_id: str):
+    """查询指定会话的对话历史。"""
+    history = get_chat_agent().get_history(session_id)
+    if history is None:
+        raise HTTPException(status_code=404, detail="Session not found")
+    return history
+
+
+@app.delete("/api/rag-chat/sessions/{session_id}")
+async def rag_chat_clear_session(session_id: str):
+    """清空指定会话。"""
+    deleted = get_chat_agent().clear_session(session_id)
+    return {"status": "success", "deleted": deleted, "session_id": session_id}
+
+
+@app.post(
+    "/api/rag-tool/search",
+    response_model=RagToolResponse,
+    dependencies=[Depends(require_rag_tool_api_key)],
+)
+async def rag_tool_search(request: RagToolRequest):
+    """供维修知识问答智能体调用的只读、版本化检索工具。"""
+    return MaintenanceKnowledgeRetriever().search(request)
+
+
+@app.get("/api/rag-tool/health", dependencies=[Depends(require_rag_tool_api_key)])
+async def rag_tool_health():
+    """工具可用性与知识库版本探针。"""
+    return get_tool_health()
 
 
 if __name__ == "__main__":

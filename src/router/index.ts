@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../HomeView.vue";
 import PredictReport from "../PredictReport.vue";
 import FaultAnalysisReport from "../FaultAnalysisReport.vue";
+import MaintenanceChat from "../MaintenanceChat.vue";
 
 const routes = [
     {
@@ -18,6 +19,11 @@ const routes = [
         path: "/fault-analysis",
         name: "fault-analysis",
         component: FaultAnalysisReport,
+    },
+    {
+        path: "/maintenance-chat",
+        name: "maintenance-chat",
+        component: MaintenanceChat,
     },
     {
         path: "/:pathMatch(.*)*",

@@ -314,6 +314,86 @@
         </div>
       </section>
 
+      <section v-if="ragAdvice" class="content-section rag-section">
+        <div class="section-header">
+          <h2>AI 维修处置建议</h2>
+          <span>Local RAG Evidence</span>
+        </div>
+
+        <div class="rag-summary">
+          <div>
+            <span>异常判断</span>
+            <p>{{ ragAdvice.abnormal_judgment }}</p>
+          </div>
+          <div>
+            <span>风险等级</span>
+            <strong :class="ragAdvice.risk_level === '高' ? 'danger' : ragAdvice.risk_level === '中' ? 'warning' : 'normal'">
+              {{ ragAdvice.risk_level }}风险
+            </strong>
+          </div>
+          <div>
+            <span>是否建议放行</span>
+            <p>{{ ragAdvice.release_recommendation }}</p>
+          </div>
+        </div>
+
+        <div class="rag-actions no-print">
+          <button type="button" @click="showRagEvidence = !showRagEvidence">
+            {{ showRagEvidence ? '隐藏依据' : '查看依据' }}
+          </button>
+          <button type="button" @click="requestRagFollowup('why')">为什么这样建议</button>
+          <button type="button" @click="requestRagFollowup('extra_checks')">补充检查项</button>
+        </div>
+
+        <div class="rag-columns">
+          <div>
+            <h3>建议检查步骤</h3>
+            <ol>
+              <li v-for="(step, index) in ragAdvice.recommended_actions" :key="index">{{ step }}</li>
+            </ol>
+          </div>
+          <div v-if="showRagEvidence">
+            <h3>参考依据</h3>
+            <ul>
+              <li v-for="reference in ragAdvice.references" :key="reference.source">
+                <strong>{{ reference.title }}</strong>：{{ reference.content }}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rag-question no-print">
+          <input
+              v-model="ragQuestion"
+              type="text"
+              placeholder="输入维修相关问题，例如：现在能否继续放行？"
+              @keyup.enter="submitRagQuestion"
+          >
+          <button type="button" :disabled="ragFollowupLoading" @click="submitRagQuestion">
+            {{ ragFollowupLoading ? '处理中...' : '提交追问' }}
+          </button>
+        </div>
+
+        <div v-if="ragFollowup" class="rag-followup">
+          <div class="rag-followup-head">
+            <strong>{{ ragFollowup.action === 'why' ? '建议解释' : ragFollowup.action === 'extra_checks' ? '补充检查项' : '追问结果' }}</strong>
+            <span v-if="!ragFollowup.supported">当前知识库依据不足</span>
+          </div>
+          <p>{{ ragFollowup.answer }}</p>
+          <ul v-if="ragFollowup.items?.length">
+            <li v-for="(item, index) in ragFollowup.items" :key="index">{{ item }}</li>
+          </ul>
+          <div v-if="ragFollowup.action === 'question' && ragFollowup.references?.length" class="rag-followup-sources">
+            依据：{{ ragFollowupSourceNames }}
+          </div>
+        </div>
+
+        <div class="rag-precautions">
+          <strong>注意事项：</strong>
+          <span v-for="(item, index) in ragAdvice.precautions" :key="index">{{ item }}</span>
+        </div>
+      </section>
+
       <section class="content-section">
         <div class="section-header">
           <h2>九、报告说明</h2>
@@ -357,6 +437,49 @@ import { engineDataConfig } from './engineDataConfig'
 
 const router = useRouter()
 const reportRef = ref<HTMLElement | null>(null)
+const ragAdvice = ref<any | null>(readRagAdvice())
+const showRagEvidence = ref(true)
+const ragFollowup = ref<any | null>(null)
+const ragFollowupLoading = ref(false)
+const ragQuestion = ref('')
+const ragFollowupSourceNames = computed(() => {
+  return ragFollowup.value?.references?.map((item: any) => item.title).join('、') || ''
+})
+
+function readRagAdvice() {
+  try {
+    const stored = localStorage.getItem('ragAdvice')
+    return stored ? JSON.parse(stored) : null
+  } catch {
+    return null
+  }
+}
+
+async function requestRagFollowup(action: string, question = '') {
+  if (!ragAdvice.value || ragFollowupLoading.value) return
+
+  ragFollowupLoading.value = true
+  try {
+    const response = await fetch('http://localhost:8000/api/rag-followup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action, question, context: ragAdvice.value })
+    })
+    if (!response.ok) throw new Error(`RAG follow-up HTTP ${response.status}`)
+    const result = await response.json()
+    if (result.status === 'success') ragFollowup.value = result
+  } catch (error) {
+    console.warn('RAG 追问不可用:', error)
+  } finally {
+    ragFollowupLoading.value = false
+  }
+}
+
+function submitRagQuestion() {
+  const question = ragQuestion.value.trim()
+  if (!question) return
+  void requestRagFollowup('question', question)
+}
 
 const now = new Date()
 
@@ -1400,6 +1523,147 @@ const wordExportStyles = `
   text-align: right;
 }
 
+.rag-summary {
+  display: grid;
+  grid-template-columns: 1.4fr 0.45fr 1.4fr;
+  gap: 12px;
+}
+
+.rag-summary > div,
+.rag-columns > div {
+  padding: 14px;
+  background: rgba(0, 240, 255, 0.04);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  border-radius: 8px;
+}
+
+.rag-summary span {
+  display: block;
+  color: #8bb7d9;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.rag-summary p,
+.rag-columns li {
+  color: #dceefa;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.rag-columns {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.rag-columns h3 {
+  color: #ffffff;
+  font-size: 15px;
+  margin: 0 0 9px;
+}
+
+.rag-columns ol,
+.rag-columns ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.rag-columns li + li {
+  margin-top: 7px;
+}
+
+.rag-precautions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 14px;
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-left: 3px solid #ffca3a;
+  background: rgba(255, 202, 58, 0.06);
+  color: #cbddec;
+  line-height: 1.6;
+}
+
+.rag-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.rag-actions button,
+.rag-question button {
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  background: rgba(0, 240, 255, 0.08);
+  color: #8eeeff;
+  padding: 7px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.rag-actions button:hover,
+.rag-question button:hover:not(:disabled) {
+  background: rgba(0, 240, 255, 0.18);
+}
+
+.rag-question {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.rag-question input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  background: rgba(4, 15, 34, 0.8);
+  color: #e5f6ff;
+  padding: 8px 10px;
+  border-radius: 4px;
+}
+
+.rag-question input::placeholder {
+  color: #7292aa;
+}
+
+.rag-question button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.rag-followup {
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid rgba(100, 255, 180, 0.2);
+  background: rgba(100, 255, 180, 0.04);
+  color: #dceefa;
+  line-height: 1.7;
+}
+
+.rag-followup-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #ffffff;
+}
+
+.rag-followup-head span,
+.rag-followup-sources {
+  color: #ffca3a;
+  font-size: 13px;
+}
+
+.rag-followup p {
+  margin: 8px 0;
+}
+
+.rag-followup ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
 .note-box {
   color: #bfd5e7;
   line-height: 1.8;
@@ -1448,8 +1712,14 @@ const wordExportStyles = `
   .summary-grid,
   .two-column,
   .risk-layout,
-  .param-grid {
+  .param-grid,
+  .rag-summary,
+  .rag-columns {
     grid-template-columns: 1fr;
+  }
+
+  .rag-question {
+    flex-direction: column;
   }
 
   .report-footer {

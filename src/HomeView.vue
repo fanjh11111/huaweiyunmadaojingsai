@@ -274,9 +274,26 @@
           <div class="panel-inner">
             <div class="panel-header-row">
               <div class="panel-title">智能维护建议</div>
-              <div class="btn-group">
-                <button class="ai-btn" @click="goToPredictReport">预测报告</button>
-              </div>
+            </div>
+
+            <div class="ai-action-grid" aria-label="智能维护功能入口">
+              <button type="button" class="ai-action-card report-action" @click="goToPredictReport">
+                <span class="ai-action-icon" aria-hidden="true">▣</span>
+                <span class="ai-action-copy">
+                  <strong>预测报告</strong>
+                  <small>查看健康评分与处置建议</small>
+                </span>
+                <span class="ai-action-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button type="button" class="ai-action-card chat-action" @click="goToMaintenanceChat">
+                <span class="ai-action-icon" aria-hidden="true">✦</span>
+                <span class="ai-action-copy">
+                  <strong>维修问答</strong>
+                  <small>基于维修知识库继续追问</small>
+                </span>
+                <span class="ai-action-arrow" aria-hidden="true">→</span>
+              </button>
             </div>
 
             <template v-if="hasImportedData">
@@ -368,6 +385,94 @@
         </div>
       </div>
     </main>
+
+    <!-- 部件检查工单弹窗 -->
+    <div
+        v-if="predictionDetailVisible && predictionDetail"
+        class="detail-modal-mask"
+        @click.self="closePredictionDetails"
+    >
+      <div class="detail-modal">
+        <div class="detail-modal-header">
+          <span class="detail-modal-title">检查工单 · {{ predictionDetail.partName }}</span>
+          <span class="priority-tag" :class="predictionDetail.priority.className">
+            {{ predictionDetail.priority.text }}
+          </span>
+          <button class="detail-modal-close" @click="closePredictionDetails">✕</button>
+        </div>
+
+        <div class="detail-modal-body">
+          <div class="detail-overview">
+            <div class="detail-stat main">
+              <span class="detail-stat-label">风险概率</span>
+              <strong class="detail-stat-value" :class="predictionDetail.priority.className">
+                {{ predictionDetail.probability }}%
+              </strong>
+            </div>
+            <div class="detail-stat">
+              <span class="detail-stat-label">健康度</span>
+              <strong class="detail-stat-value">{{ predictionDetail.healthScore || '--' }}</strong>
+            </div>
+            <div class="detail-stat">
+              <span class="detail-stat-label">严重异常</span>
+              <strong class="detail-stat-value severe">{{ predictionDetail.severeCount }}</strong>
+            </div>
+            <div class="detail-stat">
+              <span class="detail-stat-label">中等异常</span>
+              <strong class="detail-stat-value moderate">{{ predictionDetail.moderateCount }}</strong>
+            </div>
+            <div class="detail-stat">
+              <span class="detail-stat-label">轻微异常</span>
+              <strong class="detail-stat-value minor">{{ predictionDetail.minorCount }}</strong>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <div class="detail-section-title">传感器读数</div>
+            <div class="detail-sensor-grid">
+              <div
+                  v-for="(sensor, idx) in predictionDetail.sensors"
+                  :key="idx"
+                  class="detail-sensor"
+              >
+                <span>{{ sensor.label }}</span>
+                <strong>{{ sensor.value }}{{ sensor.unit }}</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <div class="detail-section-title">
+              相关异常事件（最近 {{ predictionDetail.events.length }} 条）
+            </div>
+            <div v-if="predictionDetail.events.length === 0" class="detail-empty">
+              该部件暂无异常事件记录
+            </div>
+            <div
+                v-for="(event, idx) in predictionDetail.events"
+                :key="idx"
+                class="detail-event-row"
+            >
+              <span class="tl-time">{{ event.time }}</span>
+              <span class="log-tag" :class="event.level">{{ event.levelText }}</span>
+              <span class="detail-event-desc" :title="event.description">
+                {{ event.description }}
+              </span>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <div class="detail-section-title">维护建议</div>
+            <p class="detail-suggestion">{{ predictionDetail.suggestion }}</p>
+          </div>
+        </div>
+
+        <div class="detail-modal-footer">
+          <button class="detail-btn ghost" @click="closePredictionDetails">关闭</button>
+          <button class="detail-btn primary" @click="askAiAboutPart">问 AI 深入分析 →</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -671,6 +776,7 @@ const handleFileUpload = async (e: Event) => {
   if (!file) return
 
   isPredicting.value = true
+  localStorage.removeItem('ragAdvice')
 
   Papa.parse(file, {
     header: true,
@@ -751,6 +857,8 @@ const handleFileUpload = async (e: Event) => {
       faultDetails.value = predData.faultDetails
       faultLevels.value = predData.faultLevels
       componentBackendStats.value = predData.componentStats || {}
+
+      void requestRagAdvice(predData)
 
       initLevelPieChart()
       selectComponent(selectedComponent.value.name)
@@ -1312,11 +1420,110 @@ function getRankBarWidth(count: number) {
 function goToPredictReport() {
   router.push('/predict-report')
 }
+
+function goToMaintenanceChat() {
+  router.push('/maintenance-chat')
+}
+
+async function requestRagAdvice(predData: any) {
+  const firstFault = predData.faultDetails?.[0] || {}
+  try {
+    const response = await fetch('http://localhost:8000/api/rag-advice', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        component: firstFault.part || predData.faultRanking?.[0]?.part || '发动机综合系统',
+        fault_type: firstFault.fault_type || firstFault.description || '',
+        risk_level: firstFault.levelText || '中等',
+        confidence: firstFault.probability,
+        abnormal_features: firstFault.topFeatures || [],
+        description: firstFault.description || ''
+      })
+    })
+
+    if (!response.ok) throw new Error(`RAG HTTP ${response.status}`)
+    const advice = await response.json()
+    if (advice.status === 'success') {
+      localStorage.setItem('ragAdvice', JSON.stringify(advice))
+    }
+  } catch (error) {
+    console.warn('RAG 维修建议不可用，保留原报告流程:', error)
+  }
+}
+
 function toggleInfoItem(item: any) {}
 function showLevelDetails(level: any) {}
 function toggleSensorDetail(key: any) {}
-function showPredictionDetails(item: any) {}
-function showFaultDetails(item: any) {}
+// ===== 部件检查工单弹窗 =====
+const predictionDetailVisible = ref(false)
+const predictionDetailPart = ref('')
+
+const predictionDetail = computed(() => {
+  const partName = predictionDetailPart.value
+  if (!partName) return null
+
+  const stats = getPartFaultStats(partName)
+  const priority = getPriority(stats.probability)
+  const healthScore = hasImportedData.value ? stats.healthScore : 0
+
+  const sensors = (componentSensorsMap[partName] || []).map((m) => {
+    if (m.key.includes('Health')) {
+      return { label: m.label, unit: m.unit, value: hasImportedData.value ? healthScore : '-' }
+    }
+    const sensorStats = getSensorStats(partName, m.key)
+    return { label: m.label, unit: m.unit, value: sensorStats.avg }
+  })
+
+  return {
+    partName,
+    probability: Math.round(stats.probability),
+    priority,
+    healthScore,
+    severeCount: stats.severeCount,
+    moderateCount: stats.moderateCount,
+    minorCount: stats.minorCount,
+    events: stats.relatedDetails.slice(0, 6),
+    suggestion: maintenanceSuggestionMap[partName] || '建议结合该部件传感器趋势与维护记录进行人工复核。'
+  }
+})
+
+function showPredictionDetails(item: any) {
+  if (!item?.area) return
+  predictionDetailPart.value = item.area
+  predictionDetailVisible.value = true
+}
+
+function showFaultDetails(item: any) {
+  if (!item?.part) return
+  predictionDetailPart.value = item.part
+  predictionDetailVisible.value = true
+}
+
+function closePredictionDetails() {
+  predictionDetailVisible.value = false
+}
+
+function askAiAboutPart() {
+  const detail = predictionDetail.value
+  if (!detail) return
+
+  const firstEvent = detail.events[0] || {}
+  localStorage.setItem('ragAdvice', JSON.stringify({
+    component: detail.partName,
+    fault_type: firstEvent.fault_type || firstEvent.description || '',
+    risk_level: detail.severeCount > 0 ? '高' : detail.moderateCount > 0 ? '中' : '低',
+    confidence: detail.probability,
+    abnormal_features: firstEvent.topFeatures || [],
+    description: firstEvent.description || ''
+  }))
+
+  const severeBrief = detail.severeCount > 0 ? `，已出现 ${detail.severeCount} 条严重异常` : ''
+  const question = `${detail.partName}当前风险概率 ${detail.probability}%${severeBrief}，请给出「${detail.priority.text}」级别的检查方案与处置建议。`
+  localStorage.setItem('ragPendingQuestion', question)
+
+  predictionDetailVisible.value = false
+  router.push('/maintenance-chat')
+}
 
 let scene: THREE.Scene | null = null
 let camera: THREE.PerspectiveCamera | null = null
@@ -2277,19 +2484,124 @@ onUnmounted(() => {
   margin-bottom: 0;
 }
 
-.ai-btn {
-  background: rgba(0, 240, 255, 0.2);
-  border: 1px solid #00f0ff;
-  color: #00f0ff;
-  font-size: 14px;
-  padding: 4px 12px;
-  border-radius: 2px;
-  cursor: pointer;
+.ai-action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin: 1px 0 10px;
+  flex-shrink: 0;
 }
 
-.ai-btn:hover {
-  background: #00f0ff;
-  color: #000;
+.ai-action-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  min-height: 58px;
+  padding: 9px 10px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 240, 255, 0.45);
+  border-radius: 6px;
+  color: #e8fbff;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.ai-action-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.report-action {
+  background: linear-gradient(120deg, rgba(0, 113, 255, 0.3), rgba(0, 240, 255, 0.09));
+}
+
+.report-action::before {
+  background: linear-gradient(110deg, transparent 30%, rgba(0, 240, 255, 0.18), transparent 68%);
+}
+
+.chat-action {
+  border-color: rgba(111, 153, 255, 0.56);
+  background: linear-gradient(120deg, rgba(73, 93, 255, 0.33), rgba(0, 240, 255, 0.09));
+}
+
+.chat-action::before {
+  background: linear-gradient(110deg, transparent 30%, rgba(134, 148, 255, 0.2), transparent 68%);
+}
+
+.ai-action-card:hover {
+  transform: translateY(-2px);
+  border-color: #65efff;
+  box-shadow: 0 7px 18px rgba(0, 220, 255, 0.24), inset 0 0 16px rgba(0, 240, 255, 0.08);
+}
+
+.ai-action-card:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.ai-action-icon,
+.ai-action-copy,
+.ai-action-arrow {
+  position: relative;
+  z-index: 1;
+}
+
+.ai-action-icon {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 1px solid rgba(0, 240, 255, 0.55);
+  border-radius: 50%;
+  color: #78f5ff;
+  font-size: 18px;
+  box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.14);
+}
+
+.chat-action .ai-action-icon {
+  color: #b6c5ff;
+  border-color: rgba(166, 184, 255, 0.62);
+}
+
+.ai-action-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ai-action-copy strong {
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+.ai-action-copy small {
+  overflow: hidden;
+  color: #9fc8df;
+  font-size: 11px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ai-action-arrow {
+  margin-left: 5px;
+  color: #8ef7ff;
+  font-size: 20px;
+  transition: transform 0.18s ease;
+}
+
+.ai-action-card:hover .ai-action-arrow {
+  transform: translateX(3px);
 }
 
 .advice-summary {
@@ -2590,5 +2902,239 @@ onUnmounted(() => {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 240, 255, 0.6);
+}
+
+/* ===== 部件检查工单弹窗 ===== */
+.detail-modal-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(3, 10, 22, 0.74);
+  backdrop-filter: blur(3px);
+}
+
+.detail-modal {
+  width: min(560px, 92vw);
+  max-height: 84vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, rgba(10, 24, 46, 0.98), rgba(7, 16, 32, 0.98));
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 10px;
+  box-shadow: 0 0 28px rgba(0, 240, 255, 0.22), 0 12px 40px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+
+.detail-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.16);
+  background: rgba(0, 240, 255, 0.05);
+}
+
+.detail-modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #8eeeff;
+  letter-spacing: 1px;
+}
+
+.detail-modal-close {
+  margin-left: auto;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: 4px;
+  background: transparent;
+  color: #8eeeff;
+  font-size: 14px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.detail-modal-close:hover {
+  background: rgba(237, 63, 53, 0.18);
+  border-color: #ed3f35;
+  color: #ff8f86;
+}
+
+.detail-modal-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 14px 18px 6px;
+}
+
+.detail-overview {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.detail-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 4px;
+  background: rgba(4, 15, 34, 0.65);
+  border: 1px solid rgba(0, 240, 255, 0.12);
+  border-radius: 6px;
+}
+
+.detail-stat.main {
+  border-color: rgba(237, 63, 53, 0.4);
+  background: rgba(237, 63, 53, 0.08);
+}
+
+.detail-stat-label {
+  font-size: 12px;
+  color: #7292aa;
+}
+
+.detail-stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #e5f6ff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.detail-stat.main .detail-stat-value {
+  font-size: 26px;
+}
+
+.detail-stat-value.severe,
+.detail-stat-value.priority-severe {
+  color: #ed3f35;
+}
+
+.detail-stat-value.moderate,
+.detail-stat-value.priority-moderate {
+  color: #eacf19;
+}
+
+.detail-stat-value.minor,
+.detail-stat-value.priority-minor {
+  color: #60cda0;
+}
+
+.detail-section {
+  margin-bottom: 14px;
+}
+
+.detail-section-title {
+  font-size: 13px;
+  color: #4c9bfd;
+  margin-bottom: 8px;
+  padding-left: 8px;
+  border-left: 3px solid #00eaff;
+}
+
+.detail-sensor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.detail-sensor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(4, 15, 34, 0.5);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  border-radius: 5px;
+  font-size: 13px;
+  color: #9fc3dd;
+}
+
+.detail-sensor strong {
+  color: #e5f6ff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.detail-empty {
+  padding: 14px;
+  text-align: center;
+  font-size: 13px;
+  color: #7292aa;
+  background: rgba(4, 15, 34, 0.5);
+  border-radius: 5px;
+}
+
+.detail-event-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  margin-bottom: 6px;
+  background: rgba(4, 15, 34, 0.5);
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.detail-event-desc {
+  flex: 1;
+  min-width: 0;
+  color: #c3d8e8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detail-suggestion {
+  margin: 0;
+  padding: 10px 12px;
+  background: rgba(0, 240, 255, 0.05);
+  border: 1px dashed rgba(0, 240, 255, 0.25);
+  border-radius: 5px;
+  color: #cde8f8;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.detail-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px 18px;
+  border-top: 1px solid rgba(0, 240, 255, 0.16);
+  background: rgba(8, 15, 34, 0.9);
+}
+
+.detail-btn {
+  padding: 9px 22px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.detail-btn.ghost {
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  background: transparent;
+  color: #8eeeff;
+}
+
+.detail-btn.ghost:hover {
+  background: rgba(0, 240, 255, 0.12);
+}
+
+.detail-btn.primary {
+  border: none;
+  background: linear-gradient(90deg, #00eaff, #37c2ff);
+  color: #06111e;
+  font-weight: 700;
+}
+
+.detail-btn.primary:hover {
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.5);
+  transform: translateY(-1px);
 }
 </style>
