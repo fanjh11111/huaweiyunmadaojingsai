@@ -8,6 +8,7 @@ import uvicorn
 import os
 import secrets
 from datetime import datetime, timedelta
+from pathlib import Path
 
 try:
     from rag.agent import generate_advice, generate_followup
@@ -19,6 +20,7 @@ except ModuleNotFoundError:  # 允许从项目根目录以模块方式启动
     from backend.rag.chat import get_chat_agent
 
 app = FastAPI()
+BASE_DIR = Path(__file__).resolve().parent
 
 
 def require_rag_tool_api_key(x_api_key: str | None = Header(default=None, alias="X-API-Key")) -> None:
@@ -27,10 +29,18 @@ def require_rag_tool_api_key(x_api_key: str | None = Header(default=None, alias=
     if expected_key and not secrets.compare_digest(x_api_key or "", expected_key):
         raise HTTPException(status_code=401, detail="Invalid RAG tool API key")
 
-# 允许 Vue 前端跨域请求
+# 本地开发默认允许 Vite；上线时可以通过 CORS_ORIGINS 指定实际域名。
+cors_origins = [
+    origin.strip()
+    for origin in os.getenv(
+        "CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173"
+    ).split(",")
+    if origin.strip()
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -42,8 +52,8 @@ app.add_middleware(
 # "Input and hidden tensors are not at the same device"。
 # 为保证跨机器演示稳定，推理统一在 CPU 上执行。
 device = torch.device("cpu")
-scaler = joblib.load("engine_scaler.pkl")
-model = torch.jit.load("lstm_engine_traced_cpu.pt", map_location=device)
+scaler = joblib.load(BASE_DIR / "engine_scaler.pkl")
+model = torch.jit.load(BASE_DIR / "lstm_engine_traced_cpu.pt", map_location=device)
 model.eval()
 
 # 2. 核心特征 -> 物理部件映射字典

@@ -481,6 +481,7 @@ import { ref, shallowRef, computed, onMounted, onUnmounted, nextTick } from 'vue
 import * as echarts from 'echarts'
 import * as THREE from 'three'
 import { useRouter } from 'vue-router'
+import { apiUrl } from './api'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import Papa from 'papaparse'
@@ -797,7 +798,7 @@ const handleFileUpload = async (e: Event) => {
     const formData = new FormData()
     formData.append('file', file)
 
-    const response = await fetch('http://localhost:8000/api/predict', {
+    const response = await fetch(apiUrl('/predict'), {
       method: 'POST',
       body: formData
     })
@@ -1428,7 +1429,7 @@ function goToMaintenanceChat() {
 async function requestRagAdvice(predData: any) {
   const firstFault = predData.faultDetails?.[0] || {}
   try {
-    const response = await fetch('http://localhost:8000/api/rag-advice', {
+    const response = await fetch(apiUrl('/rag-advice'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

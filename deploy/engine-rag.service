@@ -1,0 +1,16 @@
+[Unit]
+Description=Aircraft engine prediction and maintenance RAG API
+After=network.target
+
+[Service]
+Type=simple
+User=appuser
+Group=appuser
+WorkingDirectory=/opt/huaweiyunmadaojingsai/backend
+EnvironmentFile=/etc/huaweiyunmadaojingsai.env
+ExecStart=/opt/huaweiyunmadaojingsai/.venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -434,6 +434,7 @@
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { engineDataConfig } from './engineDataConfig'
+import { apiUrl } from './api'
 
 const router = useRouter()
 const reportRef = ref<HTMLElement | null>(null)
@@ -460,7 +461,7 @@ async function requestRagFollowup(action: string, question = '') {
 
   ragFollowupLoading.value = true
   try {
-    const response = await fetch('http://localhost:8000/api/rag-followup', {
+    const response = await fetch(apiUrl('/rag-followup'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action, question, context: ragAdvice.value })

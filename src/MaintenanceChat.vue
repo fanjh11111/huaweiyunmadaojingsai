@@ -111,11 +111,12 @@
 import { ref, computed, nextTick, onMounted, onActivated } from 'vue'
 import { useRouter } from 'vue-router'
 import { marked } from 'marked'
+import { apiUrl } from './api'
 
 marked.setOptions({ breaks: true, gfm: true })
 
 const router = useRouter()
-const backendUrl = 'http://localhost:8000/api/rag-chat'
+const backendUrl = apiUrl('/rag-chat')
 
 function escapeHtml(text: string): string {
   return text
