@@ -56,6 +56,45 @@ scaler = joblib.load(BASE_DIR / "engine_scaler.pkl")
 model = torch.jit.load(BASE_DIR / "lstm_engine_traced_cpu.pt", map_location=device)
 model.eval()
 
+SEQUENCE_LENGTH = 20
+# Keep the peak memory bounded when a production CSV contains tens of thousands
+# of rows. The old implementation passed every sequence to the LSTM at once.
+PREDICTION_BATCH_SIZE = 256
+
+
+def run_batched_prediction(X_scaled: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Run the traced LSTM in fixed-size batches without changing its output."""
+    sequence_count = len(X_scaled) - SEQUENCE_LENGTH
+    if sequence_count <= 0:
+        raise HTTPException(
+            status_code=400,
+            detail=f"CSV needs more than {SEQUENCE_LENGTH} data rows for prediction.",
+        )
+
+    prediction_batches = []
+    probability_batches = []
+    with torch.no_grad():
+        for start in range(0, sequence_count, PREDICTION_BATCH_SIZE):
+            stop = min(start + PREDICTION_BATCH_SIZE, sequence_count)
+            batch = np.stack(
+                [X_scaled[index:index + SEQUENCE_LENGTH] for index in range(start, stop)]
+            )
+            batch_tensor = torch.from_numpy(batch).to(device=device, dtype=torch.float32)
+            logits = model(batch_tensor)
+            prediction_batches.append(logits.argmax(dim=1).cpu().numpy())
+            probability_batches.append(torch.softmax(logits, dim=1)[:, 1].cpu().numpy())
+
+    return np.concatenate(prediction_batches), np.concatenate(probability_batches)
+
+
+def segment_feature_score(X_scaled: np.ndarray, start: int, end: int) -> np.ndarray:
+    """Compute the original segment score without materializing all sequence windows."""
+    window_means = np.empty((SEQUENCE_LENGTH, X_scaled.shape[1]), dtype=np.float32)
+    for offset in range(SEQUENCE_LENGTH):
+        window_means[offset] = X_scaled[start + offset:end + offset + 1].mean(axis=0)
+
+    return np.abs(window_means.mean(axis=0)) * window_means.std(axis=0)
+
 # 2. 核心特征 -> 物理部件映射字典
 FEATURE_MAP = {
     "动力涡轮": [225, 137, 219, 236],
@@ -308,22 +347,18 @@ async def predict_flight_data(file: UploadFile = File(...)):
     df.columns = [str(col).replace("\r", "").replace("\n", "").strip() for col in df.columns]
 
     X = df.iloc[:, 1:321].values
+    if X.shape[1] != 320:
+        raise HTTPException(status_code=400, detail="CSV must contain an identifier column and 320 feature columns.")
     feature_names = [f"第{i}列数据" for i in range(1, 321)]
 
     component_stats = build_component_stats(df)
     global_metrics = build_global_metrics(df)
 
     # 归一化 & 构造序列
-    X_scaled = scaler.transform(X)
-    seq_len = 20
-    X_seq = np.array([X_scaled[i:i + seq_len] for i in range(len(X_scaled) - seq_len)])
-    X_tensor = torch.tensor(X_seq, dtype=torch.float32).to(device)
+    X_scaled = scaler.transform(X).astype(np.float32, copy=False)
 
     # 模型批量推理
-    with torch.no_grad():
-        out = model(X_tensor)
-        pred = out.argmax(dim=1).cpu().numpy()
-        probs = torch.softmax(out, dim=1)[:, 1].cpu().numpy()
+    pred, probs = run_batched_prediction(X_scaled)
 
     # 提取连续故障段
     segments = []
@@ -352,8 +387,7 @@ async def predict_flight_data(file: UploadFile = File(...)):
     base_time = datetime.now().replace(hour=10, minute=0, second=0)
 
     for idx, (s, e, conf) in enumerate(top_faults):
-        seq_mat = np.array(X_seq[s:e + 1])
-        score = np.abs(seq_mat.mean(axis=(0, 1))) * seq_mat.mean(axis=0).std(axis=0)
+        score = segment_feature_score(X_scaled, s, e)
         top10_cols = [feature_names[i] for i in np.argsort(score)[::-1][:10]]
 
         fault_part = get_part_by_features(top10_cols)
