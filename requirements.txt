@@ -15,7 +15,8 @@ numpy>=1.24
 # 模型推理（LSTM 预测 + scaler 反序列化需要 scikit-learn）
 torch>=2.2
 joblib>=1.3
-scikit-learn>=1.3
+# The persisted MinMaxScaler was produced by 1.3.2; keep inference deterministic.
+scikit-learn==1.3.2
 
 # 可选：AgentArts / DashScope 调用脚本依赖（不装不影响主流程，RAG 会自动降级本地模板）
 requests>=2.31
