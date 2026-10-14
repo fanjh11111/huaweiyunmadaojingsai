@@ -21,3 +21,10 @@ venv/
 # OS
 .DS_Store
 Thumbs.db
+
+# Local workspace material and private source documents
+.arts/
+.workbuddy/
+tmp/
+backend/rag/1/
+backend/rag/invoke_dashscope.py

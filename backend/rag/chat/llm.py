@@ -4,7 +4,7 @@
 配置 AGENTARTS_API_URL + AGENTARTS_API_KEY 后自动切换到 AgentArtsLlmClient，
 调用华为 AgentArts 智能体 API（POST /runtimes/{runtime}/invocations，body: {"query": "..."}）。
 未配置 AgentArts 且 DashScope 可用（DASHSCOPE_ENABLED=1 且有 Key，复用
-rag.invoke_dashscope 的配置）时，切换到 DashScopeLlmClient 调用 qwen-plus。
+rag.dashscope_client 的配置）时，切换到 DashScopeLlmClient 调用 qwen-plus。
 
 AgentArts API 格式（参考最佳实践文档）：
 - 请求 Header: Authorization: Bearer {api_key}, x-hw-agentarts-session-id: {会话ID}
@@ -209,7 +209,7 @@ class DashScopeLlmClient:
     ) -> str:
         import requests  # 延迟导入：未安装 requests 时本类仍可被构造/测试
 
-        from ..invoke_dashscope import (
+        from ..dashscope_client import (
             DASHSCOPE_API_KEY,
             DASHSCOPE_MODEL,
             DASHSCOPE_TIMEOUT,
@@ -283,7 +283,7 @@ def get_llm_client() -> LlmClient:
 
     dashscope_ready = False
     try:
-        from ..invoke_dashscope import DASHSCOPE_API_KEY, DASHSCOPE_ENABLED, DASHSCOPE_URL
+        from ..dashscope_client import DASHSCOPE_API_KEY, DASHSCOPE_ENABLED, DASHSCOPE_URL
 
         dashscope_ready = bool(DASHSCOPE_ENABLED and DASHSCOPE_API_KEY and DASHSCOPE_URL)
     except ImportError:

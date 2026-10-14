@@ -67,9 +67,9 @@ def _try_dashscope(context: dict) -> dict | None:
         return None
 
     try:
-        from .invoke_dashscope import invoke_llm
+        from .dashscope_client import invoke_llm
     except ImportError:
-        logger.warning("无法导入 invoke_dashscope 模块")
+        logger.warning("无法导入 DashScope 客户端模块")
         return None
 
     features = context.get("abnormal_features", []) or []

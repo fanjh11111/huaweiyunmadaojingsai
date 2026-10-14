@@ -17,6 +17,20 @@ _MIN_CHUNK_CHARS = 50
 
 
 def _split_text(text: str) -> list[str]:
+    # 对带二级标题的知识文档，保持“一个主题小节 = 一个检索片段”。这能避免
+    # 多个不相干的维修规则被拼进同一段，从而降低检索命中后误引用的风险。
+    sections = [section.strip() for section in re.split(r"(?m)^##\s+", text) if section.strip()]
+    if len(sections) > 1:
+        heading_sections = sections[1:]
+        chunks: list[str] = []
+        for section in heading_sections:
+            if len(section) <= _MAX_CHUNK_CHARS:
+                if len(section) >= _MIN_CHUNK_CHARS:
+                    chunks.append(section)
+                continue
+            chunks.extend(_split_text(section))
+        return chunks
+
     paragraphs = [p.strip() for p in re.split(r"\n\s*\n", text) if p.strip()]
     chunks: list[str] = []
     buffer = ""
