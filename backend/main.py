@@ -1,28 +1,97 @@
-from fastapi import FastAPI, UploadFile, File
+from fastapi import Depends, FastAPI, File, Header, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 import numpy as np
 import torch
 import joblib
 import uvicorn
+import os
+import secrets
 from datetime import datetime, timedelta
+from pathlib import Path
+
+try:
+    from rag.agent import generate_advice, generate_followup
+    from rag.tool import MaintenanceKnowledgeRetriever, RagToolRequest, RagToolResponse, get_tool_health
+    from rag.chat import get_chat_agent
+except ModuleNotFoundError:  # 允许从项目根目录以模块方式启动
+    from backend.rag.agent import generate_advice, generate_followup
+    from backend.rag.tool import MaintenanceKnowledgeRetriever, RagToolRequest, RagToolResponse, get_tool_health
+    from backend.rag.chat import get_chat_agent
 
 app = FastAPI()
+BASE_DIR = Path(__file__).resolve().parent
+
+
+def require_rag_tool_api_key(x_api_key: str | None = Header(default=None, alias="X-API-Key")) -> None:
+    """仅保护供外部智能体调用的工具接口，不影响现有前端接口。"""
+    expected_key = os.getenv("RAG_TOOL_API_KEY")
+    if expected_key and not secrets.compare_digest(x_api_key or "", expected_key):
+        raise HTTPException(status_code=401, detail="Invalid RAG tool API key")
 
 # 允许 Vue 前端跨域请求
+cors_origins = [
+    origin.strip()
+    for origin in os.getenv(
+        "CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173"
+    ).split(",")
+    if origin.strip()
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # 1. 加载模型与归一化器
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-scaler = joblib.load("engine_scaler.pkl")
-model = torch.jit.load("lstm_engine_traced.pt", map_location=device)
+# 注意：lstm_engine_traced_cpu.pt 在 trace 时内部 hidden 已固化为 CPU 设备；
+# 若本机有 CUDA 而把输入搬到 cuda:0，会报
+# "Input and hidden tensors are not at the same device"。
+# 为保证跨机器演示稳定，推理统一在 CPU 上执行。
+device = torch.device("cpu")
+scaler = joblib.load(BASE_DIR / "engine_scaler.pkl")
+model = torch.jit.load(BASE_DIR / "lstm_engine_traced_cpu.pt", map_location=device)
 model.eval()
+
+SEQUENCE_LENGTH = 20
+PREDICTION_BATCH_SIZE = 256
+
+
+def run_batched_prediction(X_scaled: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Run the traced LSTM in bounded batches to avoid large CSV memory spikes."""
+    sequence_count = len(X_scaled) - SEQUENCE_LENGTH
+    if sequence_count <= 0:
+        raise HTTPException(
+            status_code=400,
+            detail=f"CSV needs more than {SEQUENCE_LENGTH} data rows for prediction.",
+        )
+
+    prediction_batches = []
+    probability_batches = []
+    with torch.no_grad():
+        for start in range(0, sequence_count, PREDICTION_BATCH_SIZE):
+            stop = min(start + PREDICTION_BATCH_SIZE, sequence_count)
+            batch = np.stack(
+                [X_scaled[index:index + SEQUENCE_LENGTH] for index in range(start, stop)]
+            )
+            batch_tensor = torch.from_numpy(batch).to(device=device, dtype=torch.float32)
+            logits = model(batch_tensor)
+            prediction_batches.append(logits.argmax(dim=1).cpu().numpy())
+            probability_batches.append(torch.softmax(logits, dim=1)[:, 1].cpu().numpy())
+
+    return np.concatenate(prediction_batches), np.concatenate(probability_batches)
+
+
+def segment_feature_score(X_scaled: np.ndarray, start: int, end: int) -> np.ndarray:
+    """Score a fault segment without materializing every LSTM sequence window."""
+    window_means = np.empty((SEQUENCE_LENGTH, X_scaled.shape[1]), dtype=np.float32)
+    for offset in range(SEQUENCE_LENGTH):
+        window_means[offset] = X_scaled[start + offset:end + offset + 1].mean(axis=0)
+
+    return np.abs(window_means.mean(axis=0)) * window_means.std(axis=0)
 
 # 2. 核心特征 -> 物理部件映射字典
 FEATURE_MAP = {
@@ -276,22 +345,19 @@ async def predict_flight_data(file: UploadFile = File(...)):
     df.columns = [str(col).replace("\r", "").replace("\n", "").strip() for col in df.columns]
 
     X = df.iloc[:, 1:321].values
+    if X.shape[1] != 320:
+        raise HTTPException(status_code=400, detail="CSV must contain an identifier column and 320 feature columns.")
     feature_names = [f"第{i}列数据" for i in range(1, 321)]
 
     component_stats = build_component_stats(df)
     global_metrics = build_global_metrics(df)
 
     # 归一化 & 构造序列
-    X_scaled = scaler.transform(X)
-    seq_len = 20
-    X_seq = np.array([X_scaled[i:i + seq_len] for i in range(len(X_scaled) - seq_len)])
-    X_tensor = torch.tensor(X_seq, dtype=torch.float32).to(device)
+    X_scaled = scaler.transform(X).astype(np.float32, copy=False)
 
     # 模型批量推理
     with torch.no_grad():
-        out = model(X_tensor)
-        pred = out.argmax(dim=1).cpu().numpy()
-        probs = torch.softmax(out, dim=1)[:, 1].cpu().numpy()
+        pred, probs = run_batched_prediction(X_scaled)
 
     # 提取连续故障段
     segments = []
@@ -320,8 +386,7 @@ async def predict_flight_data(file: UploadFile = File(...)):
     base_time = datetime.now().replace(hour=10, minute=0, second=0)
 
     for idx, (s, e, conf) in enumerate(top_faults):
-        seq_mat = np.array(X_seq[s:e + 1])
-        score = np.abs(seq_mat.mean(axis=(0, 1))) * seq_mat.mean(axis=0).std(axis=0)
+        score = segment_feature_score(X_scaled, s, e)
         top10_cols = [feature_names[i] for i in np.argsort(score)[::-1][:10]]
 
         fault_part = get_part_by_features(top10_cols)
@@ -392,6 +457,66 @@ async def predict_flight_data(file: UploadFile = File(...)):
             "globalMetrics": global_metrics,
         },
     }
+
+
+@app.post("/api/rag-advice")
+async def rag_advice(payload: dict):
+    """根据预测结果检索本地知识库并生成结构化维修辅助建议。"""
+    return generate_advice(payload or {})
+
+
+@app.post("/api/rag-followup")
+async def rag_followup(payload: dict):
+    """处理查看依据、建议解释、补充检查和单次维修追问。"""
+    payload = payload or {}
+    return generate_followup(
+        payload.get("context") or {},
+        payload.get("action") or "question",
+        payload.get("question") or "",
+    )
+
+
+@app.post("/api/rag-chat")
+async def rag_chat(payload: dict):
+    """维修知识问答智能体对话接口，支持多轮会话与故障上下文注入。"""
+    payload = payload or {}
+    return get_chat_agent().chat(
+        user_message=payload.get("message") or "",
+        session_id=payload.get("session_id"),
+        fault_context=payload.get("fault_context"),
+    )
+
+
+@app.get("/api/rag-chat/sessions/{session_id}")
+async def rag_chat_history(session_id: str):
+    """查询指定会话的对话历史。"""
+    history = get_chat_agent().get_history(session_id)
+    if history is None:
+        raise HTTPException(status_code=404, detail="Session not found")
+    return history
+
+
+@app.delete("/api/rag-chat/sessions/{session_id}")
+async def rag_chat_clear_session(session_id: str):
+    """清空指定会话。"""
+    deleted = get_chat_agent().clear_session(session_id)
+    return {"status": "success", "deleted": deleted, "session_id": session_id}
+
+
+@app.post(
+    "/api/rag-tool/search",
+    response_model=RagToolResponse,
+    dependencies=[Depends(require_rag_tool_api_key)],
+)
+async def rag_tool_search(request: RagToolRequest):
+    """供维修知识问答智能体调用的只读、版本化检索工具。"""
+    return MaintenanceKnowledgeRetriever().search(request)
+
+
+@app.get("/api/rag-tool/health", dependencies=[Depends(require_rag_tool_api_key)])
+async def rag_tool_health():
+    """工具可用性与知识库版本探针。"""
+    return get_tool_health()
 
 
 if __name__ == "__main__":
